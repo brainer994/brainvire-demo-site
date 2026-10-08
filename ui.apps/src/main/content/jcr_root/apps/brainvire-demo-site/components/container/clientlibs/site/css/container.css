@@ -1,0 +1,32 @@
+/* ── Container Spacing Styles ── */
+
+/* Padding Top */
+.container--pt-none .cmp-container  { padding-top: 0; }
+.container--pt-sm .cmp-container    { padding-top: 16px; }
+.container--pt-md .cmp-container    { padding-top: 32px; }
+.container--pt-lg .cmp-container    { padding-top: 64px; }
+.container--pt-xl .cmp-container    { padding-top: 96px; }
+
+/* Padding Bottom */
+.container--pb-none .cmp-container  { padding-bottom: 0; }
+.container--pb-sm .cmp-container    { padding-bottom: 16px; }
+.container--pb-md .cmp-container    { padding-bottom: 32px; }
+.container--pb-lg .cmp-container    { padding-bottom: 64px; }
+.container--pb-xl .cmp-container    { padding-bottom: 96px; }
+
+/* Padding Top + Bottom combined */
+.container--py-none .cmp-container  { padding-top: 0;     padding-bottom: 0; }
+.container--py-sm .cmp-container    { padding-top: 16px;  padding-bottom: 16px; }
+.container--py-md .cmp-container    { padding-top: 32px;  padding-bottom: 32px; }
+.container--py-lg .cmp-container    { padding-top: 64px;  padding-bottom: 64px; }
+.container--py-xl .cmp-container    { padding-top: 96px;  padding-bottom: 96px; }
+
+/* Responsive: reduce spacing on mobile */
+@media (max-width: 768px) {
+    .container--pt-lg .cmp-container  { padding-top: 40px; }
+    .container--pt-xl .cmp-container  { padding-top: 64px; }
+    .container--pb-lg .cmp-container  { padding-bottom: 40px; }
+    .container--pb-xl .cmp-container  { padding-bottom: 64px; }
+    .container--py-lg .cmp-container  { padding-top: 40px;  padding-bottom: 40px; }
+    .container--py-xl .cmp-container  { padding-top: 64px;  padding-bottom: 64px; }
+}

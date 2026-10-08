@@ -1,0 +1,302 @@
+.brainvire-teaser {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #fff;
+    min-height: 400px;
+}
+
+.brainvire-teaser .cmp-teaser__image {
+    flex: 0 0 52%;
+    order: 2;
+    overflow: hidden;
+}
+
+.brainvire-teaser .cmp-teaser__image .cmp-image {
+    width: 100%;
+    height: 100%;
+}
+
+.brainvire-teaser .cmp-teaser__image .cmp-image__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.brainvire-teaser .brainvire-teaser__content {
+    flex: 0 0 48%;
+    order: 1;
+    padding: 48px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+}
+
+.brainvire-teaser .cmp-teaser__title {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.1;
+    color: #111827;
+    margin: 0;
+}
+
+.brainvire-teaser .cmp-teaser__description {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #111827;
+    margin: 0;
+}
+
+.brainvire-teaser .cmp-teaser__description p {
+    margin: 0;
+}
+
+.brainvire-teaser .brainvire-teaser__secondary-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #111827;
+    margin: 8px 0 0;
+}
+
+.brainvire-teaser .brainvire-teaser__supporting-description {
+    font-size: 0.9375rem;
+    color: #374151;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.brainvire-teaser .brainvire-teaser__metadata {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #6b7280;
+    margin: 4px 0 0;
+}
+
+.brainvire-teaser .cmp-teaser__action-container {
+    margin-top: 8px;
+}
+
+.brainvire-teaser .cmp-teaser__action-link {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: #2563eb;
+    text-decoration: none;
+}
+
+.brainvire-teaser .cmp-teaser__action-link:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .brainvire-teaser {
+        flex-direction: column;
+    }
+
+    .brainvire-teaser .cmp-teaser__image {
+        flex: 0 0 auto;
+        order: 1;
+        min-height: 220px;
+    }
+
+    .brainvire-teaser .brainvire-teaser__content {
+        flex: 1;
+        order: 2;
+        padding: 28px 24px;
+    }
+
+    .brainvire-teaser .cmp-teaser__title {
+        font-size: 2rem;
+    }
+}
+
+/* ── Stat Card Variant (Commerce Migration, Platform Move, etc.) ── */
+.brainvire-teaser--stat-card {
+    margin: 0 15px;
+}
+.brainvire-teaser--stat-card .brainvire-teaser,
+.brainvire-teaser--stat-card.brainvire-teaser {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #e5e7eb;
+    border-top: 3px solid #2563eb;
+    border-radius: 8px;
+    background: #fff;
+    padding: 32px 28px 24px;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: unset;
+    max-width: none;
+}
+
+.brainvire-teaser--stat-card .brainvire-teaser .cmp-teaser__image,
+.brainvire-teaser--stat-card.brainvire-teaser .cmp-teaser__image {
+    display: none;
+}
+
+.brainvire-teaser--stat-card .brainvire-teaser .brainvire-teaser__content,
+.brainvire-teaser--stat-card.brainvire-teaser .brainvire-teaser__content {
+    flex: 1;
+    order: unset;
+    padding: 0;
+    justify-content: flex-start;
+    gap: 0;
+}
+
+/* Top row: pretitle left, stat right */
+.brainvire-teaser--stat-card .brainvire-teaser__top-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+/* Pretitle with blue dash */
+.brainvire-teaser--stat-card .brainvire-teaser__pretitle {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #2563eb;
+    margin: 0;
+    padding-top: 6px;
+    flex-shrink: 0;
+    max-width: 45%;
+}
+
+.brainvire-teaser--stat-card .brainvire-teaser__pretitle::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 2px;
+    background: #2563eb;
+    flex-shrink: 0;
+}
+
+.brainvire-teaser--stat-card .brainvire-teaser__pretitle .cmp-teaser__pretitle {
+    margin: 0;
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit;
+    letter-spacing: inherit;
+    text-transform: inherit;
+}
+
+/* Stat group: title + description stacked, right-aligned */
+.brainvire-teaser--stat-card .brainvire-teaser__stat {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+}
+
+.brainvire-teaser--stat-card .brainvire-teaser__stat .cmp-teaser__title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1;
+    color: #111827;
+    margin: 0;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.brainvire-teaser--stat-card .brainvire-teaser__stat .cmp-teaser__description {
+    font-size: 0.8rem;
+    color: #6b7280;
+    text-align: right;
+    margin: 4px 0 0;
+    line-height: 1.4;
+    font-weight: 400;
+}
+
+.brainvire-teaser--stat-card .brainvire-teaser__stat .cmp-teaser__description p {
+    margin: 0;
+}
+
+/* Secondary title */
+.brainvire-teaser--stat-card .brainvire-teaser__secondary-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #111827;
+    margin: 0 0 12px;
+    line-height: 1.3;
+}
+
+/* Supporting description */
+.brainvire-teaser--stat-card .brainvire-teaser__supporting-description {
+    font-size: 0.9rem;
+    color: #374151;
+    line-height: 1.6;
+    margin: 0 0 20px;
+}
+
+/* Footer row: metadata left, CTA right */
+.brainvire-teaser--stat-card .brainvire-teaser__footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 16px;
+    border-top: 1px solid #e5e7eb;
+    gap: 12px;
+}
+
+.brainvire-teaser--stat-card .brainvire-teaser__metadata {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #6b7280;
+    margin: 0;
+}
+
+.brainvire-teaser--stat-card .cmp-teaser__action-container {
+    margin: 0;
+}
+
+.brainvire-teaser--stat-card .cmp-teaser__action-link {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.brainvire-teaser--stat-card .cmp-teaser__action-link:hover {
+    color: #2563eb;
+}
+
+@media (max-width: 768px) {
+    .brainvire-teaser--stat-card .brainvire-teaser__top-row {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .brainvire-teaser--stat-card .brainvire-teaser__stat {
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .brainvire-teaser--stat-card .brainvire-teaser__stat .cmp-teaser__title,
+    .brainvire-teaser--stat-card .brainvire-teaser__stat .cmp-teaser__description {
+        text-align: left;
+    }
+
+    .brainvire-teaser--stat-card .brainvire-teaser__footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
