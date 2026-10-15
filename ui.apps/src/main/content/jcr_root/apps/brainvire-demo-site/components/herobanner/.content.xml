@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0"
+          xmlns:cq="http://www.day.com/jcr/cq/1.0"
+          jcr:primaryType="cq:Component"
+          jcr:title="Hero Banner"
+          jcr:description="Hero banner with image or video background, calls to action, and cards."
+          componentGroup="Brainvire Demo Site - Content"/>

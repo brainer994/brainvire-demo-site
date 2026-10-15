@@ -1,0 +1,54 @@
+<sly data-sly-use.hero="com.brainvire.aem.brainviredemosite.core.models.HeroBannerModel"
+     data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"
+     data-sly-call="${clientlib.css @ categories='brainvire.herobanner'}" />
+
+<section class="hero-banner" data-sly-test="${hero.title}">
+    <div class="hero-banner__media" aria-hidden="true">
+        <video data-sly-test="${hero.videoBackground}"
+               class="hero-banner__video"
+               autoplay muted loop playsinline
+               poster="${hero.backgroundImage @ context='uri'}">
+            <source src="${hero.backgroundVideo @ context='uri'}" />
+        </video>
+        <img data-sly-test="${!hero.videoBackground && hero.backgroundImage}"
+             class="hero-banner__image"
+             src="${hero.backgroundImage @ context='uri'}"
+             alt="" />
+        <div class="hero-banner__overlay"
+             style="opacity: ${hero.overlayOpacityCss @ context='styleString'}"></div>
+    </div>
+
+    <div class="hero-banner__inner">
+        <div class="hero-banner__content">
+            <p class="hero-banner__eyebrow" data-sly-test="${hero.eyebrow}">${hero.eyebrow}</p>
+            <h1 class="hero-banner__title">${hero.title @ context='html'}</h1>
+            <div class="hero-banner__description" data-sly-test="${hero.description}">${hero.description @ context='html'}</div>
+            <div class="hero-banner__actions" data-sly-test="${hero.firstButtonText || hero.secondButtonText}">
+                <a data-sly-test="${hero.firstButtonText && hero.firstButtonLink}"
+                   class="hero-banner__button hero-banner__button--primary"
+                   href="${hero.firstButtonLink @ context='uri'}">${hero.firstButtonText}<span aria-hidden="true"> →</span></a>
+                <a data-sly-test="${hero.secondButtonText && hero.secondButtonLink}"
+                   class="hero-banner__button hero-banner__button--secondary"
+                   href="${hero.secondButtonLink @ context='uri'}">${hero.secondButtonText}</a>
+            </div>
+        </div>
+
+        <div class="hero-banner__cards" data-sly-test="${hero.cards.size > 0}" data-sly-list.card="${hero.cards}">
+            <a data-sly-test="${card.link}"
+               class="hero-banner__card hero-banner__card--link"
+               href="${card.link @ context='uri'}"
+               target="${card.openInNewTab ? '_blank' : '_self'}"
+               rel="${card.openInNewTab ? 'noopener noreferrer' : ''}">
+                <h2 class="hero-banner__card-title">${card.formattedTitle ? card.formattedTitle : card.title @ context='html'}</h2>
+                <p class="hero-banner__card-subtitle" data-sly-test="${card.subtitle}">${card.subtitle}</p>
+            </a>
+            <div data-sly-test="${!card.link}"
+                 class="hero-banner__card">
+                <h2 class="hero-banner__card-title">${card.formattedTitle ? card.formattedTitle : card.title @ context='html'}</h2>
+                <p class="hero-banner__card-subtitle" data-sly-test="${card.subtitle}">${card.subtitle}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<sly data-sly-call="${clientlib.js @ categories='brainvire.herobanner'}" />
