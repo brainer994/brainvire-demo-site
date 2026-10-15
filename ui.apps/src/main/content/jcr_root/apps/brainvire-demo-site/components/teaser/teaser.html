@@ -1,0 +1,62 @@
+<sly data-sly-use.teaser="com.adobe.cq.wcm.core.components.models.Teaser"
+     data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
+     data-sly-use.imageTemplate="image.html"
+     data-sly-use.pretitleTemplate="pretitle.html"
+     data-sly-use.titleTemplate="title.html"
+     data-sly-use.descriptionTemplate="description.html"
+     data-sly-use.actionsTemplate="actions.html">
+
+    <article class="cmp-teaser brainvire-teaser ${currentStyle.cssClasses @ context='attribute'}">
+
+        <!-- IMPORTANT: Core Teaser image rendering -->
+        <sly data-sly-call="${imageTemplate.image @ teaser=teaser}"></sly>
+
+        <div class="cmp-teaser__content brainvire-teaser__content">
+
+            <!-- Top row: pretitle left + stat (title+description) right -->
+            <div class="brainvire-teaser__top-row">
+
+                <!-- Pretitle -->
+                <div class="brainvire-teaser__pretitle"
+                    data-sly-test="${teaser.pretitle || properties.pretitleIcon}">
+                    <img class="brainvire-teaser__pretitle-icon"
+                        src="${properties.pretitleIcon @ context='uri'}"
+                        alt=""
+                        data-sly-test="${properties.pretitleIcon}"/>
+                    <sly data-sly-call="${pretitleTemplate.pretitle @ teaser=teaser}"></sly>
+                </div>
+
+                <!-- Stat: title + description grouped -->
+                <div class="brainvire-teaser__stat">
+                    <sly data-sly-call="${titleTemplate.title @ teaser=teaser}"></sly>
+                    <sly data-sly-call="${descriptionTemplate.description @ teaser=teaser}"></sly>
+                </div>
+
+            </div>
+
+            <!-- Custom Secondary Title -->
+            <h3 class="brainvire-teaser__secondary-title"
+                data-sly-test="${properties.secondaryTitle}">
+                ${properties.secondaryTitle}
+            </h3>
+
+            <!-- Custom Supporting Description -->
+            <div class="brainvire-teaser__supporting-description"
+                 data-sly-test="${properties.supportingDescription}">
+                ${properties.supportingDescription}
+            </div>
+
+            <!-- Footer: metadata left + CTA right -->
+            <div class="brainvire-teaser__footer">
+                <div class="brainvire-teaser__metadata"
+                     data-sly-test="${properties.metadata}">
+                    ${properties.metadata}
+                </div>
+                <sly data-sly-call="${actionsTemplate.actions @ teaser=teaser}"></sly>
+            </div>
+
+        </div>
+
+    </article>
+
+</sly>

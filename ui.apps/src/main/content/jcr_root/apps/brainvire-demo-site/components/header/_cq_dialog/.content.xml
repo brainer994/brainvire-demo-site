@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root
+    xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    xmlns:cq="http://www.day.com/jcr/cq/1.0"
+    xmlns:jcr="http://www.jcp.org/jcr/1.0"
+    xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Header"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    extraClientlibs="[brainvire.header.dialog]"
+    >
+
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/tabs"
+        maximized="{Boolean}false">
+
+        <items jcr:primaryType="nt:unstructured">
+
+            <!-- ===================================================== -->
+            <!-- Logo Tab                                               -->
+            <!-- ===================================================== -->
+
+            <logo
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Logo"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+
+                <items jcr:primaryType="nt:unstructured">
+
+                    <logoImage
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                        fieldLabel="Logo"
+                        fieldDescription="Select the header logo."
+                        name="./logoImage"
+                        rootPath="/content/dam/brainvire-demo-site"
+                        required="{Boolean}true"/>
+
+                    <logoAlt
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="Logo Alt Text"
+                        fieldDescription="Alternative text for the logo."
+                        name="./logoAlt"
+                        required="{Boolean}true"/>
+
+                    <logoLink
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                        fieldLabel="Logo Link"
+                        fieldDescription="Page where the logo should navigate."
+                        name="./logoLink"
+                        rootPath="/content/brainvire-demo-site"/>
+
+                </items>
+            </logo>
+
+
+            <!-- ===================================================== -->
+            <!-- Navigation &amp; Mega Menu Tab                        -->
+            <!-- ===================================================== -->
+
+            <navigation
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Navigation &amp; Mega Menu"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+
+                <items jcr:primaryType="nt:unstructured">
+
+                    <navigationRoot
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                        fieldLabel="Navigation Root"
+                        fieldDescription="Select the root page whose child pages will be used to generate the header navigation."
+                        name="./navigationRoot"
+                        rootPath="/content/brainvire-demo-site"
+                        required="{Boolean}true"/>
+
+                    <megaMenuItems
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Mega Menu Items"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                        composite="{Boolean}true">
+
+                        <field
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                            name="./megaMenuItems">
+
+                            <items jcr:primaryType="nt:unstructured">
+
+                                <!-- ================================================= -->
+                                <!-- Menu Item                                          -->
+                                <!-- ================================================= -->
+
+                                <menuLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Menu Label"
+                                    fieldDescription="Must match the navigation page title exactly to attach the mega menu."
+                                    name="./menuLabel"
+                                    required="{Boolean}true"/>
+
+                                <menuLink
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                    fieldLabel="Menu Link"
+                                    fieldDescription="Optional link for the top-level nav item."
+                                    name="./menuLink"
+                                    rootPath="/content/brainvire-demo-site"/>
+
+                                <menuLinkNewTab
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                    text="Open Menu Link in New Tab"
+                                    name="./menuLinkNewTab"
+                                    value="{Boolean}true"
+                                    uncheckedValue="{Boolean}false"/>
+
+                                <showFooterBar
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                    text="Show Footer Bar (Why Enterprises Choose Brainvire)"
+                                    name="./showFooterBar"
+                                    value="{Boolean}true"
+                                    uncheckedValue="{Boolean}false"/>
+
+
+                                <!-- ================================================= -->
+                                <!-- Groups                                             -->
+                                <!-- ================================================= -->
+
+                                <groups
+                                    jcr:primaryType="nt:unstructured"
+                                    jcr:title="Groups"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                    composite="{Boolean}true">
+
+                                    <field
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                                        name="./groups">
+
+                                        <items jcr:primaryType="nt:unstructured">
+
+                                            <groupLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Group Label"
+                                                fieldDescription="Uppercase heading displayed for this column (e.g. ODOO, SHOPIFY)."
+                                                name="./groupLabel"
+                                                required="{Boolean}true"/>
+
+                                            <groupLink
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                fieldLabel="Group Link"
+                                                fieldDescription="Optional link for the group heading."
+                                                name="./groupLink"
+                                                rootPath="/content/brainvire-demo-site"/>
+
+                                            <groupLinkNewTab
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                text="Open Group Link in New Tab"
+                                                name="./groupLinkNewTab"
+                                                value="{Boolean}true"
+                                                uncheckedValue="{Boolean}false"/>
+
+
+                                            <!-- ===================================== -->
+                                            <!-- Sub Links                             -->
+                                            <!-- ===================================== -->
+
+                                            <subLinks
+                                                jcr:primaryType="nt:unstructured"
+                                                jcr:title="Sub Links"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                composite="{Boolean}true">
+
+                                                <field
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                    name="./subLinks">
+
+                                                    <items jcr:primaryType="nt:unstructured">
+
+                                                        <subLabel
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                            fieldLabel="Sub Label"
+                                                            fieldDescription="Label for the submenu link."
+                                                            name="./subLabel"
+                                                            required="{Boolean}true"/>
+
+                                                        <subLink
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                            fieldLabel="Sub Link (Internal)"
+                                                            fieldDescription="Select an AEM page. Use the External URL field below for external links."
+                                                            name="./subLink"
+                                                            rootPath="/content/brainvire-demo-site"/>
+
+                                                        <subLinkExternal
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                            fieldLabel="Sub Link (External URL)"
+                                                            fieldDescription="Use for external URLs (e.g. https://example.com). Overrides the internal link above if both are set."
+                                                            name="./subLinkExternal"/>
+
+                                                        <subLinkNewTab
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                            text="Open Sub Link in New Tab"
+                                                            name="./subLinkNewTab"
+                                                            value="{Boolean}true"
+                                                            uncheckedValue="{Boolean}false"/>
+
+                                                    </items>
+                                                </field>
+
+                                            </subLinks>
+
+                                        </items>
+                                    </field>
+
+                                </groups>
+
+
+                                <!-- ================================================= -->
+                                <!-- Card Section                                       -->
+                                <!-- ================================================= -->
+
+                                <cardSection
+                                    jcr:primaryType="nt:unstructured"
+                                    jcr:title="Card Section (Right Panel)"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                                    name="./cardSection">
+
+                                    <items jcr:primaryType="nt:unstructured">
+
+                                        <cardEyebrow
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldLabel="Eyebrow Label"
+                                            fieldDescription="Small uppercase label above the title (e.g. EXECUTIVE BRIEFING)."
+                                            name="./cardSection/cardEyebrow"
+                                            value="Executive Briefing"/>
+
+                                        <cardTitle
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldLabel="Title"
+                                            fieldDescription="Title displayed in the mega menu card."
+                                            name="./cardSection/cardTitle"/>
+
+                                        <cardDescription
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                            fieldLabel="Description"
+                                            fieldDescription="Description displayed in the mega menu card."
+                                            name="./cardSection/cardDescription"
+                                            rows="3"/>
+
+                                        <cardButtonText
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldLabel="Button Text"
+                                            fieldDescription="Text displayed on the card button (e.g. Schedule now)."
+                                            name="./cardSection/cardButtonText"/>
+
+                                        <cardButtonLink
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                            fieldLabel="Button Link (Internal)"
+                                            fieldDescription="Select an AEM page for the card button."
+                                            name="./cardSection/cardButtonLink"
+                                            rootPath="/content/brainvire-demo-site"/>
+
+                                        <cardButtonLinkExternal
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldLabel="Button Link (External URL)"
+                                            fieldDescription="Use for external URLs. Overrides the internal link above if both are set."
+                                            name="./cardSection/cardButtonLinkExternal"/>
+
+                                        <cardButtonNewTab
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                            text="Open Button Link in New Tab"
+                                            name="./cardSection/cardButtonNewTab"
+                                            value="{Boolean}true"
+                                            uncheckedValue="{Boolean}false"/>
+
+                                        <cardImage
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                            fieldLabel="Background Image"
+                                            fieldDescription="Optional image shown at the top of the card."
+                                            name="./cardSection/cardImage"
+                                            rootPath="/content/dam/brainvire-demo-site"/>
+
+                                    </items>
+
+                                </cardSection>
+
+                            </items>
+                        </field>
+
+                    </megaMenuItems>
+                </items>
+            </navigation>
+
+
+            <!-- ===================================================== -->
+            <!-- Footer Stats Bar Tab                                  -->
+            <!-- ===================================================== -->
+
+            <footerBar
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Mega Menu Footer Bar"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+
+                <items jcr:primaryType="nt:unstructured">
+
+                    <footerBarLabel
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="Footer Label"
+                        fieldDescription="Small uppercase label on the left (e.g. WHY ENTERPRISES CHOOSE BRAINVIRE)."
+                        name="./footerBarLabel"
+                        value="Why Enterprises Choose Brainvire"/>
+
+                    <footerBarLogos
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Partner Logos"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                        composite="{Boolean}true">
+
+                        <field
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                            name="./footerBarLogos">
+
+                            <items jcr:primaryType="nt:unstructured">
+
+                                <logoName
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Partner Name"
+                                    fieldDescription="Text label shown in the partner badge (e.g. Adobe, Odoo, Shopify)."
+                                    name="./logoName"
+                                    required="{Boolean}true"/>
+
+                                <logoImage
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                    fieldLabel="Partner Logo Image"
+                                    fieldDescription="Optional logo image. If empty, the partner name text is shown."
+                                    name="./logoImage"
+                                    rootPath="/content/dam/brainvire-demo-site"/>
+
+                                <logoLink
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                    fieldLabel="Partner Link"
+                                    fieldDescription="Optional link for the partner badge."
+                                    name="./logoLink"
+                                    rootPath="/content/brainvire-demo-site"/>
+
+                            </items>
+                        </field>
+
+                    </footerBarLogos>
+
+                    <footerBarStats
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="Stats Text"
+                        fieldDescription="Stats shown on the right side of the footer bar (e.g. 2,000+ brands served · 95% client retention · 10+ global offices)."
+                        name="./footerBarStats"
+                        value="2,000+ brands served · 95% client retention · 10+ global offices"/>
+
+                </items>
+            </footerBar>
+
+
+            <!-- ===================================================== -->
+            <!-- Call To Action Tab                                    -->
+            <!-- ===================================================== -->
+
+            <cta
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Call To Action"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+
+                <items jcr:primaryType="nt:unstructured">
+
+                    <ctaText
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="CTA Text"
+                        fieldDescription="Text displayed on the header CTA button."
+                        name="./ctaText"
+                        value="Let's Talk"/>
+
+                    <ctaLink
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                        fieldLabel="CTA Link"
+                        fieldDescription="Page where the CTA button should navigate."
+                        name="./ctaLink"
+                        rootPath="/content/brainvire-demo-site"/>
+
+                    <ctaNewTab
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                        text="Open CTA in New Tab"
+                        name="./ctaNewTab"
+                        value="{Boolean}true"
+                        uncheckedValue="{Boolean}false"/>
+
+                </items>
+            </cta>
+
+        </items>
+    </content>
+
+</jcr:root>

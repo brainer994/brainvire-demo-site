@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root
+    xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    xmlns:jcr="http://www.jcp.org/jcr/1.0"
+    xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured">
+
+    <content
+        jcr:primaryType="nt:unstructured">
+
+        <items
+            jcr:primaryType="nt:unstructured">
+
+            <tabs
+                jcr:primaryType="nt:unstructured">
+
+                <items
+                    jcr:primaryType="nt:unstructured">
+
+                    <brainvire
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="custom"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        sling:orderBefore="styletab">
+
+                        <items jcr:primaryType="nt:unstructured">
+
+                            <pretitleIcon
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                fieldLabel="Pretitle Icon"
+                                fieldDescription="Select an icon or logo displayed before the pretitle."
+                                name="./pretitleIcon"
+                                rootPath="/content/dam"/>
+
+                            <secondaryTitle
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Secondary Title"
+                                fieldDescription="Enter additional title information."
+                                name="./secondaryTitle"/>
+
+                            <supportingDescription
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                fieldLabel="Supporting Description"
+                                fieldDescription="Enter additional supporting information."
+                                name="./supportingDescription"
+                                rows="4"/>
+
+                            <metadata
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Metadata"
+                                fieldDescription="Enter supporting information such as industry, category, or technology."
+                                name="./metadata"/>
+
+                        </items>
+
+                    </brainvire>
+
+                </items>
+
+            </tabs>
+
+        </items>
+
+    </content>
+
+</jcr:root>

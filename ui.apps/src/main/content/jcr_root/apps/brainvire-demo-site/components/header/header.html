@@ -1,0 +1,264 @@
+<sly data-sly-use.model="com.brainvire.aem.brainviredemosite.core.models.Header"/>
+
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"/>
+
+<sly data-sly-call="${clientlib.css @ categories='brainvire.header'}"/>
+
+<header class="bv-header">
+
+    <div class="bv-header__container">
+
+        <!-- Logo -->
+        <a class="bv-header__logo"
+           href="${model.logoLink || '/content/brainvire-demo-site/language-masters/en.html'}">
+            <img
+                src="${model.logoImage}"
+                alt="${model.logoAlt}"
+                class="bv-header__logo-image"/>
+        </a>
+
+
+        <!-- Desktop Navigation -->
+        <nav class="bv-header__navigation" aria-label="Main Navigation">
+
+            <ul class="bv-header__navigation-list">
+
+                <sly data-sly-list.item="${model.navigationItems}">
+
+                    <li class="bv-header__navigation-item"
+                        data-nav-label="${item.title}">
+
+                        <a class="bv-header__navigation-link" href="${item.url}">
+                            <span>${item.title}</span>
+                            <span data-sly-test="${item.hasChildren}"
+                                  class="bv-header__arrow"
+                                  aria-hidden="true">
+                                <svg viewBox="0 0 10 6" xmlns="http://www.w3.org/2000/svg">
+                                    <polyline points="1,1 5,5 9,1"/>
+                                </svg>
+                            </span>
+                        </a>
+
+                    </li>
+
+                </sly>
+
+            </ul>
+
+        </nav>
+
+
+        <!-- CTA -->
+        <a data-sly-test="${model.ctaText}"
+           class="bv-header__cta"
+           href="${model.ctaLink}"
+           target="${model.ctaNewTab ? '_blank' : '_self'}"
+           rel="${model.ctaNewTab ? 'noopener noreferrer' : ''}">
+            ${model.ctaText}
+        </a>
+
+
+        <!-- Mobile Toggle -->
+        <button class="bv-header__mobile-toggle"
+                type="button"
+                aria-label="Open menu"
+                aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+    </div>
+
+
+    <!-- ============================================================ -->
+    <!-- Mega Menus — direct children of .bv-header so               -->
+    <!-- position:absolute top:100% left:0 width:100% works correctly -->
+    <!-- ============================================================ -->
+
+    <sly data-sly-list.megaMenu="${model.megaMenuItems}">
+
+        <div class="bv-mega-menu"
+             data-mega-menu="${megaMenu.menuLabel}">
+
+            <div class="bv-mega-menu__content">
+
+                <!-- Groups -->
+                <div class="bv-mega-menu__groups">
+                    <sly data-sly-list.group="${megaMenu.groups}">
+                        <div class="bv-mega-menu__group">
+
+                            <a data-sly-test="${group.groupLink}"
+                               href="${group.groupLink}"
+                               target="${group.groupLinkNewTab ? '_blank' : '_self'}"
+                               rel="${group.groupLinkNewTab ? 'noopener noreferrer' : ''}"
+                               class="bv-mega-menu__group-title">
+                                ${group.groupLabel}
+                            </a>
+
+                            <span data-sly-test="${!group.groupLink}"
+                                  class="bv-mega-menu__group-title">
+                                ${group.groupLabel}
+                            </span>
+
+                            <ul data-sly-test="${group.subLinks}"
+                                class="bv-mega-menu__sub-links">
+                                <sly data-sly-list.subLink="${group.subLinks}">
+                                    <li>
+                                        <a class="bv-mega-menu__sub-link"
+                                           href="${subLink.subLink}"
+                                           target="${subLink.subLinkNewTab ? '_blank' : '_self'}"
+                                           rel="${subLink.subLinkNewTab ? 'noopener noreferrer' : ''}">
+                                            ${subLink.subLabel}
+                                        </a>
+                                    </li>
+                                </sly>
+                            </ul>
+
+                        </div>
+                    </sly>
+                </div>
+
+
+                <!-- Card -->
+                <sly data-sly-test.card="${megaMenu.cardSection}">
+                    <div class="bv-mega-menu__card">
+
+                        <img data-sly-test="${card.cardImage}"
+                             src="${card.cardImage}"
+                             alt="${card.cardTitle}"
+                             class="bv-mega-menu__card-image"/>
+
+                        <div class="bv-mega-menu__card-content">
+
+                            <span data-sly-test="${card.cardEyebrow}"
+                                  class="bv-mega-menu__card-eyebrow">
+                                ${card.cardEyebrow}
+                            </span>
+
+                            <h3 data-sly-test="${card.cardTitle}"
+                                class="bv-mega-menu__card-title">
+                                ${card.cardTitle}
+                            </h3>
+
+                            <p data-sly-test="${card.cardDescription}"
+                               class="bv-mega-menu__card-description">
+                                ${card.cardDescription}
+                            </p>
+
+                            <a data-sly-test="${card.cardButtonLink}"
+                               href="${card.cardButtonLink}"
+                               target="${card.cardButtonNewTab ? '_blank' : '_self'}"
+                               rel="${card.cardButtonNewTab ? 'noopener noreferrer' : ''}"
+                               class="bv-mega-menu__card-button">
+                                ${card.cardButtonText}
+                            </a>
+
+                        </div>
+                    </div>
+                </sly>
+
+            </div>
+
+
+            <!-- Footer Stats Bar -->
+            <div data-sly-test="${megaMenu.showFooterBar && (model.footerBarLabel || model.footerBarStats)}"
+                 class="bv-mega-menu__footer">
+
+                <span data-sly-test="${model.footerBarLabel}"
+                      class="bv-mega-menu__footer-label">
+                    ${model.footerBarLabel}
+                </span>
+
+                <div data-sly-test="${model.footerBarLogos}"
+                     class="bv-mega-menu__footer-logos">
+                    <sly data-sly-list.logo="${model.footerBarLogos}">
+                        <a data-sly-test="${logo.logoLink}"
+                           href="${logo.logoLink}"
+                           class="bv-mega-menu__footer-logo">
+                            <img data-sly-test="${logo.logoImage}"
+                                 src="${logo.logoImage}"
+                                 alt="${logo.logoName}"/>
+                            <span data-sly-test="${!logo.logoImage}">${logo.logoName}</span>
+                        </a>
+                        <span data-sly-test="${!logo.logoLink}"
+                              class="bv-mega-menu__footer-logo">
+                            <img data-sly-test="${logo.logoImage}"
+                                 src="${logo.logoImage}"
+                                 alt="${logo.logoName}"/>
+                            <span data-sly-test="${!logo.logoImage}">${logo.logoName}</span>
+                        </span>
+                    </sly>
+                </div>
+
+                <span data-sly-test="${model.footerBarStats}"
+                      class="bv-mega-menu__footer-stats">
+                    ${model.footerBarStats}
+                </span>
+
+            </div>
+
+        </div>
+
+    </sly>
+
+
+    <!-- Mobile Navigation -->
+    <nav class="bv-header__mobile-navigation" aria-label="Mobile Navigation">
+
+        <ul>
+
+            <sly data-sly-list.item="${model.navigationItems}">
+
+                <li>
+
+                    <sly data-sly-list.mm="${model.megaMenuItems}">
+                        <sly data-sly-test="${mm.menuLabel == item.title}">
+                            <button class="bv-header__mobile-menu-item js-mobile-accordion"
+                                    type="button"
+                                    aria-expanded="false">
+                                <span>${item.title}</span>
+                                <span class="bv-header__mobile-arrow" aria-hidden="true">+</span>
+                            </button>
+                            <div class="bv-header__mobile-sub">
+                                <sly data-sly-list.group="${mm.groups}">
+                                    <sly data-sly-list.subLink="${group.subLinks}">
+                                        <a href="${subLink.subLink}"
+                                           target="${subLink.subLinkNewTab ? '_blank' : '_self'}"
+                                           rel="${subLink.subLinkNewTab ? 'noopener noreferrer' : ''}">
+                                            ${subLink.subLabel}
+                                        </a>
+                                    </sly>
+                                </sly>
+                            </div>
+                        </sly>
+                    </sly>
+
+                    <a data-sly-test="${!item.hasChildren}"
+                       class="bv-header__mobile-menu-item"
+                       href="${item.url}">
+                        <span>${item.title}</span>
+                        <span aria-hidden="true">→</span>
+                    </a>
+
+                </li>
+
+            </sly>
+
+
+            <!-- Mobile CTA -->
+            <li data-sly-test="${model.ctaText}" class="bv-header__mobile-cta">
+                <a href="${model.ctaLink}"
+                   target="${model.ctaNewTab ? '_blank' : '_self'}"
+                   rel="${model.ctaNewTab ? 'noopener noreferrer' : ''}">
+                    ${model.ctaText}
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+</header>
+
+<sly data-sly-call="${clientlib.js @ categories='brainvire.header'}"/>

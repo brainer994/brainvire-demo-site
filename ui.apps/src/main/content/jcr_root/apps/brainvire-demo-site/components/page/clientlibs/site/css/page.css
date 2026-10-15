@@ -1,0 +1,89 @@
+.theme--light {
+    --color-bg: #ffffff;
+    --color-text: #111827;
+    --color-text-muted: #6b7280;
+    --color-border: #e5e7eb;
+    --color-link: #2563eb;
+    --color-accent: #2563eb;
+
+    background-color: var(--color-bg);
+    color: var(--color-text);
+
+    a { color: var(--color-link); }
+
+    .cmp-teaser__title,
+    .brainvire-teaser__secondary-title { color: #111827; }
+
+    .cmp-teaser__description p,
+    .brainvire-teaser__supporting-description { color: #374151; }
+
+    .brainvire-teaser {
+        background: #ffffff;
+        border-color: #e5e7eb;
+    }
+
+    .brainvire-teaser--stat-card .brainvire-teaser {
+        background: #ffffff;
+        border-color: #e5e7eb;
+        border-top-color: #2563eb;
+    }
+
+    .brainvire-teaser__pretitle,
+    .brainvire-teaser--stat-card .brainvire-teaser__pretitle { color: #2563eb; }
+
+    .brainvire-teaser--stat-card .brainvire-teaser__pretitle::before { background: #2563eb; }
+
+    .brainvire-teaser__metadata,
+    .brainvire-teaser--stat-card .brainvire-teaser__metadata { color: #6b7280; }
+
+    .brainvire-teaser__footer,
+    .brainvire-teaser--stat-card .brainvire-teaser__footer { border-top-color: #e5e7eb; }
+
+    .cmp-teaser__action-link { color: #2563eb; }
+    .cmp-teaser__action-link:hover { color: #1d4ed8; }
+}
+
+.theme--dark {
+    --color-bg: #0f172a;
+    --color-text: #f1f5f9;
+    --color-text-muted: #94a3b8;
+    --color-border: #1e293b;
+    --color-link: #60a5fa;
+    --color-accent: #60a5fa;
+
+    background-color: var(--color-bg);
+    color: var(--color-text);
+
+    a { color: var(--color-link); }
+
+    .cmp-teaser__title,
+    .brainvire-teaser__secondary-title { color: #f1f5f9; }
+
+    .cmp-teaser__description p,
+    .brainvire-teaser__supporting-description { color: #94a3b8; }
+
+    .brainvire-teaser {
+        background: #1e293b;
+        border-color: #334155;
+    }
+
+    .brainvire-teaser--stat-card .brainvire-teaser {
+        background: #1e293b;
+        border-color: #334155;
+        border-top-color: #60a5fa;
+    }
+
+    .brainvire-teaser__pretitle,
+    .brainvire-teaser--stat-card .brainvire-teaser__pretitle { color: #60a5fa; }
+
+    .brainvire-teaser--stat-card .brainvire-teaser__pretitle::before { background: #60a5fa; }
+
+    .brainvire-teaser__metadata,
+    .brainvire-teaser--stat-card .brainvire-teaser__metadata { color: #94a3b8; }
+
+    .brainvire-teaser__footer,
+    .brainvire-teaser--stat-card .brainvire-teaser__footer { border-top-color: #334155; }
+
+    .cmp-teaser__action-link { color: #60a5fa; }
+    .cmp-teaser__action-link:hover { color: #93c5fd; }
+}
