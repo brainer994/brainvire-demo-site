@@ -99,8 +99,11 @@ public class MegaMenuModel {
 
 
         public Group(Resource resource) {
-
-            this.groupLabel = resource.getValueMap().get("groupLabel", String.class);
+            String rawLabel = resource.getValueMap().get("groupLabel", String.class);
+            if (rawLabel == null || rawLabel.isBlank()) {
+                rawLabel = resource.getValueMap().get("title", String.class);
+            }
+            this.groupLabel = rawLabel != null ? rawLabel.trim().toUpperCase() : null;
             this.groupLink  = resource.getValueMap().get("groupLink", String.class);
             this.groupLinkNewTab = Boolean.TRUE.equals(
                     resource.getValueMap().get("groupLinkNewTab", Boolean.class));
@@ -112,12 +115,35 @@ public class MegaMenuModel {
             return groupLabel;
         }
 
+        public String getTitle() {
+            return groupLabel;
+        }
+
+        public String getGroupTitle() {
+            return groupLabel;
+        }
+
         public String getGroupLink() {
+            if (groupLink != null && groupLink.startsWith("/content") && !groupLink.contains(".") && !groupLink.contains("#") && !groupLink.contains("?")) {
+                return groupLink + ".html";
+            }
             return groupLink;
         }
 
         public boolean isGroupLinkNewTab() {
             return groupLinkNewTab;
+        }
+
+        public boolean isMultiColumn() {
+            return getSubLinks().size() > 5;
+        }
+
+        public int getRowCount() {
+            int size = getSubLinks().size();
+            if (size <= 5) {
+                return size;
+            }
+            return Math.max(5, (int) Math.ceil(size / 2.0));
         }
 
         public List<SubLink> getSubLinks() {
@@ -163,11 +189,13 @@ public class MegaMenuModel {
             return subLabel;
         }
 
-        /** Returns external URL if set, otherwise the internal AEM path. */
+        /** Returns external URL if set, otherwise formatted internal AEM path. */
         public String getSubLink() {
-            return (subLinkExternal != null && !subLinkExternal.isBlank())
-                    ? subLinkExternal
-                    : subLink;
+            String link = (subLink != null && !subLink.isBlank()) ? subLink : subLinkExternal;
+            if (link != null && link.startsWith("/content") && !link.contains(".") && !link.contains("#") && !link.contains("?")) {
+                return link + ".html";
+            }
+            return link;
         }
 
         public boolean isSubLinkNewTab() {
@@ -189,23 +217,27 @@ public class MegaMenuModel {
         private final String cardButtonLink;
         private final String cardButtonLinkExternal;
         private final boolean cardButtonNewTab;
+        private final String additionalText;
         private final String cardImage;
 
 
         public CardSection(Resource resource) {
 
             this.cardEyebrow            = resource.getValueMap().get("cardEyebrow", String.class);
-            this.cardTitle              = resource.getValueMap().get("cardTitle", String.class);
+            String rawTitle             = resource.getValueMap().get("cardTitle", String.class);
+            this.cardTitle              = rawTitle != null ? rawTitle.trim().toUpperCase() : null;
             this.cardDescription        = resource.getValueMap().get("cardDescription", String.class);
             this.cardButtonText         = resource.getValueMap().get("cardButtonText", String.class);
             this.cardButtonLink         = resource.getValueMap().get("cardButtonLink", String.class);
             this.cardButtonLinkExternal = resource.getValueMap().get("cardButtonLinkExternal", String.class);
             this.cardButtonNewTab       = Boolean.TRUE.equals(
                     resource.getValueMap().get("cardButtonNewTab", Boolean.class));
+            this.additionalText         = resource.getValueMap().get("additionalText", String.class);
             this.cardImage              = resource.getValueMap().get("cardImage", String.class);
         }
 
 
+        @Deprecated
         public String getCardEyebrow() {
             return cardEyebrow;
         }
@@ -222,15 +254,23 @@ public class MegaMenuModel {
             return cardButtonText;
         }
 
-        /** Returns external URL if set, otherwise the internal AEM path. */
+        /** Returns external URL if set, otherwise formatted internal AEM path. */
         public String getCardButtonLink() {
-            return (cardButtonLinkExternal != null && !cardButtonLinkExternal.isBlank())
-                    ? cardButtonLinkExternal
-                    : cardButtonLink;
+            String link = (cardButtonLink != null && !cardButtonLink.isBlank())
+                    ? cardButtonLink
+                    : cardButtonLinkExternal;
+            if (link != null && link.startsWith("/content") && !link.contains(".") && !link.contains("#") && !link.contains("?")) {
+                return link + ".html";
+            }
+            return link;
         }
 
         public boolean isCardButtonNewTab() {
             return cardButtonNewTab;
+        }
+
+        public String getAdditionalText() {
+            return additionalText;
         }
 
         public String getCardImage() {

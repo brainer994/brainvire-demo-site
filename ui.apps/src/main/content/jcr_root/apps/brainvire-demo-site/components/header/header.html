@@ -86,7 +86,7 @@
                 <!-- Groups -->
                 <div class="bv-mega-menu__groups">
                     <sly data-sly-list.group="${megaMenu.groups}">
-                        <div class="bv-mega-menu__group">
+                        <div class="bv-mega-menu__group ${group.multiColumn ? 'bv-mega-menu__group--two-columns' : ''}">
 
                             <a data-sly-test="${group.groupLink}"
                                href="${group.groupLink}"
@@ -131,11 +131,6 @@
 
                         <div class="bv-mega-menu__card-content">
 
-                            <span data-sly-test="${card.cardEyebrow}"
-                                  class="bv-mega-menu__card-eyebrow">
-                                ${card.cardEyebrow}
-                            </span>
-
                             <h3 data-sly-test="${card.cardTitle}"
                                 class="bv-mega-menu__card-title">
                                 ${card.cardTitle}
@@ -153,6 +148,11 @@
                                class="bv-mega-menu__card-button">
                                 ${card.cardButtonText}
                             </a>
+
+                            <p data-sly-test="${card.additionalText}"
+                               class="bv-mega-menu__card-additional-text">
+                                ${card.additionalText}
+                            </p>
 
                         </div>
                     </div>

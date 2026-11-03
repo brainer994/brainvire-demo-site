@@ -148,7 +148,7 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldLabel="Group Label"
-                                                fieldDescription="Uppercase heading displayed for this column (e.g. ODOO, SHOPIFY)."
+                                                fieldDescription="Uppercase heading displayed for this column (e.g. CORE EXPERTISE, TECHNOLOGY EXPERTISE)."
                                                 name="./groupLabel"
                                                 required="{Boolean}true"/>
 
@@ -197,17 +197,10 @@
                                                         <subLink
                                                             jcr:primaryType="nt:unstructured"
                                                             sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                            fieldLabel="Sub Link (Internal)"
-                                                            fieldDescription="Select an AEM page. Use the External URL field below for external links."
+                                                            fieldLabel="Sub Link"
+                                                            fieldDescription="Select an AEM page or enter an external URL for the submenu link."
                                                             name="./subLink"
                                                             rootPath="/content/brainvire-demo-site"/>
-
-                                                        <subLinkExternal
-                                                            jcr:primaryType="nt:unstructured"
-                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                            fieldLabel="Sub Link (External URL)"
-                                                            fieldDescription="Use for external URLs (e.g. https://example.com). Overrides the internal link above if both are set."
-                                                            name="./subLinkExternal"/>
 
                                                         <subLinkNewTab
                                                             jcr:primaryType="nt:unstructured"
@@ -240,19 +233,11 @@
 
                                     <items jcr:primaryType="nt:unstructured">
 
-                                        <cardEyebrow
-                                            jcr:primaryType="nt:unstructured"
-                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                            fieldLabel="Eyebrow Label"
-                                            fieldDescription="Small uppercase label above the title (e.g. EXECUTIVE BRIEFING)."
-                                            name="./cardSection/cardEyebrow"
-                                            value="Executive Briefing"/>
-
                                         <cardTitle
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                             fieldLabel="Title"
-                                            fieldDescription="Title displayed in the mega menu card."
+                                            fieldDescription="Uppercase title displayed in the mega menu card (e.g. EXECUTIVE BRIEFING)."
                                             name="./cardSection/cardTitle"/>
 
                                         <cardDescription
@@ -273,17 +258,10 @@
                                         <cardButtonLink
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                            fieldLabel="Button Link (Internal)"
-                                            fieldDescription="Select an AEM page for the card button."
+                                            fieldLabel="Button Link"
+                                            fieldDescription="Select an AEM page or enter an external URL for the card button."
                                             name="./cardSection/cardButtonLink"
                                             rootPath="/content/brainvire-demo-site"/>
-
-                                        <cardButtonLinkExternal
-                                            jcr:primaryType="nt:unstructured"
-                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                            fieldLabel="Button Link (External URL)"
-                                            fieldDescription="Use for external URLs. Overrides the internal link above if both are set."
-                                            name="./cardSection/cardButtonLinkExternal"/>
 
                                         <cardButtonNewTab
                                             jcr:primaryType="nt:unstructured"
@@ -292,6 +270,13 @@
                                             name="./cardSection/cardButtonNewTab"
                                             value="{Boolean}true"
                                             uncheckedValue="{Boolean}false"/>
+
+                                        <additionalText
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldLabel="Additional Text"
+                                            fieldDescription="Additional text displayed on the card (e.g. Replies within one business day)."
+                                            name="./cardSection/additionalText"/>
 
                                         <cardImage
                                             jcr:primaryType="nt:unstructured"
