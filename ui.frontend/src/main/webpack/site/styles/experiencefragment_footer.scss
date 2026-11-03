@@ -1,16 +1,801 @@
+//== Brainvire Experience Fragment Footer Style
+// Designed to match the live site (https://www.brainvire.com)
 
-//== XF Footer style, used on page template
+$bv-footer-bg:             #00193d;
+$bv-footer-text:           #C9DDF6;
+$bv-footer-text-light:     #ffffff;
+$bv-footer-text-muted:     #B7D2F2;
+$bv-footer-tab-inactive:   #D8E7FA;
+$bv-footer-tab-active-bg:  #ffffff;
+$bv-footer-tab-active-text:#0141a2;
+$bv-footer-blue-accent:    #0162f4;
+$bv-footer-blue-hover:     #1b76fe;
+$bv-footer-border:         rgba(255, 255, 255, 0.14);
+$bv-footer-tab-border:     rgba(255, 255, 255, 0.35);
 
-footer.experiencefragment {
-    padding: .5em 1em;
-    border-top: 1px solid $color-foreground;
+// Suppress all AEM Grid pseudo-elements universally in footer contexts
+.bv-footer .aem-Grid::before,
+.bv-footer .aem-Grid::after,
+.bv-footer__nav-grid::before,
+.bv-footer__nav-grid::after,
+.bv-footer__bottom-bar::before,
+.bv-footer__bottom-bar::after,
+.xf-web-container .aem-Grid::before,
+.xf-web-container .aem-Grid::after,
+footer.experiencefragment .aem-Grid::before,
+footer.experiencefragment .aem-Grid::after,
+.cmp-experiencefragment--footer .aem-Grid::before,
+.cmp-experiencefragment--footer .aem-Grid::after,
+.experiencefragment-footer .aem-Grid::before,
+.experiencefragment-footer .aem-Grid::after {
+    display: none !important;
+    content: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    grid-column: span 0 !important;
+}
 
-    @media (prefers-color-scheme: dark) {
-        border-color: $color-foreground-dark;
+// Scoped Footer Container: Matches on XF preview, Author, and Home page
+footer.experiencefragment,
+.experiencefragment footer,
+.cmp-experiencefragment--footer,
+.experiencefragment-footer,
+.experiencefragment--footer,
+[class*="experiencefragment-footer"],
+[class*="experiencefragment--footer"],
+.xf-web-container,
+body.xf-web-container,
+.bv-footer {
+    background-color: $bv-footer-bg !important;
+    color: $bv-footer-text !important;
+    font-family: 'BV Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
+    font-size: 14px;
+    line-height: 1.55;
+    padding: 64px 0 36px !important;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    width: 100%;
+
+    @media (max-width: 768px) {
+        padding: 40px 0 24px !important;
     }
 
-    .cmp-separator__horizontal-rule {
-        margin: 0;
-        border: 0;
+    // Suppress all AEM Grid ::before and ::after pseudo-elements within the footer
+    .aem-Grid::before,
+    .aem-Grid::after {
+        display: none !important;
+        content: none !important;
+        width: 0 !important;
+        height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        grid-column: span 0 !important;
+    }
+
+    // Ensure the inner container is centered and constrained to max 1280px
+    & > .cmp-container,
+    .cmp-experiencefragment > .cmp-container,
+    & > .container.responsivegrid > .cmp-container {
+        max-width: 1280px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        padding-left: 36px !important;
+        padding-right: 36px !important;
+        box-sizing: border-box !important;
+        width: 100% !important;
+
+        @media (max-width: 1024px) {
+            padding-left: 24px !important;
+            padding-right: 24px !important;
+        }
+
+        @media (max-width: 768px) {
+            padding-left: 16px !important;
+            padding-right: 16px !important;
+        }
+    }
+
+    // Reset default links
+    a {
+        color: inherit;
+        text-decoration: none;
+        transition: color 0.18s ease, transform 0.18s ease;
+
+        &:hover,
+        &:focus {
+            color: $bv-footer-text-light;
+        }
+    }
+
+    //==========================================
+    // 1. Horizontal Dividers / Separators
+    //==========================================
+    .separator,
+    .cmp-separator {
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+
+        .cmp-separator__horizontal-rule {
+            border: 0 !important;
+            border-top: 1px solid $bv-footer-border !important;
+            margin: 32px 0 36px !important;
+            width: 100% !important;
+
+            @media (max-width: 768px) {
+                margin: 22px 0 26px !important;
+            }
+        }
+    }
+
+    //==========================================
+    // 2. Section 1: Global Presence & Tabs
+    //==========================================
+    .title,
+    .cmp-title {
+        margin: 0 0 16px !important;
+        padding: 0 !important;
+
+        .cmp-title__text,
+        h6.cmp-title__text,
+        h2.cmp-title__text {
+            color: $bv-footer-text-light !important;
+            font-size: 12px !important;
+            font-weight: 600 !important;
+            letter-spacing: 0.12em !important;
+            text-transform: uppercase !important;
+            line-height: 1.3 !important;
+            margin: 0 0 16px !important;
+            padding: 0 !important;
+        }
+    }
+
+    // Tabs container
+    .tabs,
+    .cmp-tabs {
+        margin: 0 0 12px !important;
+        padding: 0 !important;
+
+        &__tablist {
+            display: flex !important;
+            flex-wrap: wrap !important;
+            align-items: center !important;
+            gap: 8px !important;
+            list-style: none !important;
+            padding: 0 !important;
+            margin: 0 0 20px !important;
+            border: none !important;
+
+            @media (max-width: 768px) {
+                flex-wrap: nowrap !important;
+                overflow-x: auto !important;
+                -webkit-overflow-scrolling: touch;
+                padding-bottom: 8px !important;
+                scrollbar-width: none;
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+            }
+        }
+
+        &__tab {
+            background: transparent !important;
+            border: 1px solid $bv-footer-tab-border !important;
+            color: $bv-footer-tab-inactive !important;
+            font-size: 12.5px !important;
+            font-weight: 600 !important;
+            padding: 0 18px !important;
+            min-height: 38px !important;
+            border-radius: 100px !important;
+            cursor: pointer !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            white-space: nowrap !important;
+            flex-shrink: 0 !important;
+            transition: all 0.2s ease !important;
+            text-decoration: none !important;
+            outline: none !important;
+            user-select: none !important;
+
+            &:hover,
+            &:focus-visible {
+                color: $bv-footer-text-light !important;
+                border-color: $bv-footer-text-light !important;
+                background: rgba(255, 255, 255, 0.08) !important;
+            }
+
+            &--active {
+                background: $bv-footer-tab-active-bg !important;
+                color: $bv-footer-tab-active-text !important;
+                border-color: $bv-footer-tab-active-bg !important;
+                font-weight: 600 !important;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25) !important;
+
+                &:hover {
+                    background: $bv-footer-tab-active-bg !important;
+                    color: $bv-footer-tab-active-text !important;
+                }
+            }
+        }
+
+        // Tabpanels: Clean collapse for inactive, display for active
+        &__tabpanel {
+            display: none !important;
+            height: 0 !important;
+            min-height: 0 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            overflow: hidden !important;
+            border: none !important;
+
+            &.cmp-tabs__tabpanel--active,
+            &[aria-hidden="false"] {
+                display: block !important;
+                height: auto !important;
+                min-height: 0 !important;
+                overflow: visible !important;
+                margin: 0 0 12px !important;
+                padding: 0 !important;
+            }
+
+            .container.responsivegrid,
+            .cmp-container {
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            // Grid of offices within the active panel
+            .aem-Grid {
+                display: flex !important;
+                flex-wrap: wrap !important;
+                align-items: flex-start !important;
+                gap: 20px 36px !important;
+                margin: 0 !important;
+                padding: 0 !important;
+
+                @media (min-width: 769px) and (max-width: 1024px) {
+                    display: grid !important;
+                    grid-template-columns: repeat(2, 1fr) !important;
+                    gap: 20px 28px !important;
+                }
+
+                @media (max-width: 768px) {
+                    display: flex !important;
+                    flex-direction: column !important;
+                    gap: 16px !important;
+                }
+
+                > .aem-GridColumn {
+                    float: none !important;
+                    margin: 0 !important;
+                    padding: 0 !important;
+                    flex: 1 1 200px !important;
+                    max-width: 280px !important;
+                    box-sizing: border-box !important;
+
+                    @media (min-width: 769px) and (max-width: 1024px) {
+                        max-width: 100% !important;
+                        width: 100% !important;
+                    }
+
+                    @media (max-width: 768px) {
+                        flex: 1 1 100% !important;
+                        max-width: 100% !important;
+                        width: 100% !important;
+                    }
+                }
+            }
+
+            // Office address cards
+            .cmp-text {
+                margin: 0 !important;
+                padding: 0 !important;
+
+                p {
+                    margin: 0 !important;
+                    padding: 0 !important;
+                }
+
+                p:first-child,
+                b,
+                strong {
+                    color: $bv-footer-text-light !important;
+                    font-size: 13.5px !important;
+                    font-weight: 600 !important;
+                    line-height: 1.45 !important;
+                    margin: 0 0 4px !important;
+                    display: block !important;
+                }
+
+                p:not(:first-child) {
+                    font-size: 12.5px !important;
+                    line-height: 1.6 !important;
+                    color: $bv-footer-text-muted !important;
+                    margin: 0 !important;
+                }
+            }
+        }
+    }
+
+    // "See all Brainvire office locations →" Button
+    .button,
+    .button.aem-GridColumn {
+        margin: 6px 0 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        float: none !important;
+        clear: both !important;
+
+        a.cmp-button,
+        .cmp-button {
+            background: transparent !important;
+            border: none !important;
+            padding: 0 !important;
+            color: #DCEBFF !important;
+            font-size: 12.5px !important;
+            font-weight: 500 !important;
+            text-decoration: none !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            min-height: 28px !important;
+            cursor: pointer !important;
+            transition: all 0.2s ease !important;
+
+            .cmp-button__text {
+                color: inherit !important;
+                display: inline-flex !important;
+                align-items: center !important;
+                gap: 6px !important;
+                transition: transform 0.2s ease !important;
+            }
+
+            &:hover,
+            &:focus-visible {
+                color: $bv-footer-text-light !important;
+                text-decoration: underline !important;
+
+                .cmp-button__text {
+                    transform: translateX(4px);
+                }
+            }
+        }
+    }
+
+    //==========================================
+    // 3. Section 2: 5-Column Navigation Grid
+    //==========================================
+    .bv-footer__nav-grid,
+    .aem-Grid:has(.cmp-image) {
+        display: grid !important;
+        grid-template-columns: 2fr 1fr 1fr 1fr 1fr !important;
+        gap: 36px !important;
+        align-items: start !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+
+        &::before,
+        &::after {
+            display: none !important;
+            content: none !important;
+            width: 0 !important;
+            height: 0 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            grid-column: span 0 !important;
+        }
+
+        // RESET ALL CHILDREN: Kills unwanted offsets, floats, and widths
+        > .aem-GridColumn,
+        > div[class*="aem-GridColumn"] {
+            float: none !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+            left: auto !important;
+            right: auto !important;
+            clear: none !important;
+            box-sizing: border-box !important;
+        }
+
+        // Explicitly lock each child column in Desktop view (Row 1)
+        > .aem-GridColumn:nth-of-type(1) { grid-column: 1 !important; grid-row: 1 !important; }
+        > .aem-GridColumn:nth-of-type(2) { grid-column: 2 !important; grid-row: 1 !important; }
+        > .aem-GridColumn:nth-of-type(3) { grid-column: 3 !important; grid-row: 1 !important; }
+        > .aem-GridColumn:nth-of-type(4) { grid-column: 4 !important; grid-row: 1 !important; }
+        > .aem-GridColumn:nth-of-type(5) { grid-column: 5 !important; grid-row: 1 !important; }
+
+        // Tablet Breakpoint (769px - 1024px): 2 Columns
+        @media (min-width: 769px) and (max-width: 1024px) {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 28px !important;
+
+            // Brand column spans across top of tablet navigation
+            > .aem-GridColumn:nth-of-type(1),
+            .bv-footer__brand-col {
+                grid-column: 1 / -1 !important;
+                grid-row: auto !important;
+                max-width: 100% !important;
+            }
+            > .aem-GridColumn:nth-of-type(2) { grid-column: 1 !important; grid-row: auto !important; }
+            > .aem-GridColumn:nth-of-type(3) { grid-column: 2 !important; grid-row: auto !important; }
+            > .aem-GridColumn:nth-of-type(4) { grid-column: 1 !important; grid-row: auto !important; }
+            > .aem-GridColumn:nth-of-type(5) { grid-column: 2 !important; grid-row: auto !important; }
+        }
+
+        // Mobile Breakpoint (<= 768px): 1 Column stack
+        @media (max-width: 768px) {
+            grid-template-columns: 1fr !important;
+            gap: 24px !important;
+
+            > .aem-GridColumn,
+            > .aem-GridColumn:nth-of-type(1),
+            > .aem-GridColumn:nth-of-type(2),
+            > .aem-GridColumn:nth-of-type(3),
+            > .aem-GridColumn:nth-of-type(4),
+            > .aem-GridColumn:nth-of-type(5) {
+                grid-column: 1 / -1 !important;
+                grid-row: auto !important;
+                width: 100% !important;
+            }
+        }
+    }
+
+    // Column 1: Brand / Logo + Text
+    .bv-footer__brand-col,
+    .aem-Grid:has(.cmp-image) > .aem-GridColumn:has(.cmp-image),
+    .bv-footer__nav-grid > .aem-GridColumn:has(.cmp-image) {
+        .cmp-image__image {
+            width: 210px !important;
+            max-width: 100% !important;
+            height: auto !important;
+            display: block !important;
+            margin: 0 0 16px !important;
+        }
+
+        .cmp-text {
+            max-width: 290px !important;
+
+            @media (max-width: 1024px) {
+                max-width: 100% !important;
+            }
+
+            p {
+                font-size: 13.5px !important;
+                line-height: 1.6 !important;
+                color: $bv-footer-text !important;
+                margin: 0 0 16px !important;
+
+                b, strong {
+                    color: $bv-footer-text-light !important;
+                    font-weight: 600 !important;
+                    display: block !important;
+                    margin-bottom: 4px !important;
+                }
+
+                a[href^="mailto:"] {
+                    color: $bv-footer-text !important;
+                    text-decoration: none !important;
+                    font-size: 13.5px !important;
+                    display: inline-flex !important;
+                    align-items: center !important;
+                    min-height: 24px !important;
+                    transition: color 0.2s ease !important;
+
+                    &:hover,
+                    &:focus {
+                        color: $bv-footer-text-light !important;
+                        text-decoration: underline !important;
+                    }
+                }
+            }
+        }
+    }
+
+    // Columns 2 - 5: Navigation Headings & Link Stacks ONLY within Nav Grid
+    .bv-footer__link-col,
+    .bv-footer__nav-grid > .aem-GridColumn:not(:has(.cmp-image)),
+    .aem-Grid:has(.cmp-image) > .aem-GridColumn:not(:has(.cmp-image)) {
+        .cmp-title {
+            margin: 0 0 16px !important;
+
+            .cmp-title__text,
+            h6.cmp-title__text {
+                color: $bv-footer-text-light !important;
+                font-size: 12px !important;
+                font-weight: 600 !important;
+                letter-spacing: 0.12em !important;
+                text-transform: uppercase !important;
+                line-height: 1.3 !important;
+                margin: 0 0 16px !important;
+            }
+        }
+
+        .cmp-text {
+            p {
+                margin: 0 !important;
+                font-size: 14px !important;
+                line-height: 1.5 !important;
+            }
+
+            a {
+                color: $bv-footer-text !important;
+                text-decoration: none !important;
+                display: block !important;
+                padding: 5px 0 !important;
+                font-size: 14px !important;
+                line-height: 1.4 !important;
+                transition: color 0.18s ease, transform 0.18s ease !important;
+
+                @media (max-width: 768px) {
+                    padding: 7px 0 !important;
+                    min-height: 38px !important;
+                    display: flex !important;
+                    align-items: center !important;
+                    font-size: 14.5px !important;
+                }
+
+                &:hover,
+                &:focus {
+                    color: $bv-footer-text-light !important;
+                    transform: translateX(2px) !important;
+                }
+            }
+
+            br {
+                display: none !important;
+            }
+        }
+    }
+
+    // Social Media Icons row (Company column)
+    .social-row {
+        display: flex !important;
+        align-items: center !important;
+        gap: 10px !important;
+        margin-top: 18px !important;
+        flex-wrap: wrap !important;
+
+        @media (max-width: 768px) {
+            margin-top: 14px !important;
+            gap: 12px !important;
+        }
+
+        a {
+            width: 34px !important;
+            height: 34px !important;
+            border-radius: 50% !important;
+            border: 1px solid $bv-footer-border !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            color: $bv-footer-text !important;
+            padding: 0 !important;
+            transform: none !important;
+            transition: all 0.2s ease !important;
+
+            @media (max-width: 768px) {
+                width: 38px !important;
+                height: 38px !important;
+            }
+
+            &:hover,
+            &:focus {
+                background: $bv-footer-blue-accent !important;
+                border-color: $bv-footer-blue-accent !important;
+                color: $bv-footer-text-light !important;
+                transform: translateY(-2px) !important;
+            }
+
+            svg {
+                width: 16px !important;
+                height: 16px !important;
+                fill: currentColor !important;
+            }
+        }
+    }
+
+    //==========================================
+    // 4. Section 3: Bottom Bar (Copyright, Region & Legal)
+    //==========================================
+    .bv-footer__bottom-bar,
+    .aem-Grid:has(a[href*="/us/"]),
+    .aem-Grid:has(a[href*="privacy-policy"]),
+    .aem-Grid:has(a[href*="disclaimer"]) {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        flex-wrap: nowrap !important;
+        gap: 16px 24px !important;
+        margin: 0 !important;
+        padding-top: 4px !important;
+        font-size: 13px !important;
+        color: $bv-footer-text !important;
+        width: 100% !important;
+
+        &::before,
+        &::after {
+            display: none !important;
+            content: none !important;
+            width: 0 !important;
+            height: 0 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        > .aem-GridColumn,
+        > div[class*="aem-GridColumn"] {
+            float: none !important;
+            width: auto !important;
+            max-width: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            clear: none !important;
+            box-sizing: border-box !important;
+        }
+
+        // Item 1: Copyright (Flush Left)
+        > .aem-GridColumn:nth-of-type(1) {
+            text-align: left !important;
+            flex: 0 1 auto !important;
+        }
+
+        // Item 2: Region (Center)
+        > .aem-GridColumn:nth-of-type(2),
+        .bv-footer__region-col {
+            text-align: center !important;
+            flex: 0 1 auto !important;
+            display: flex !important;
+            justify-content: center !important;
+        }
+
+        // Item 3: Legal links (Flush Right)
+        > .aem-GridColumn:nth-of-type(3),
+        > .aem-GridColumn:has(a[href*="privacy-policy"]) {
+            text-align: right !important;
+            flex: 0 1 auto !important;
+            display: flex !important;
+            justify-content: flex-end !important;
+        }
+
+        .cmp-text {
+            p {
+                margin: 0 !important;
+                font-size: 13px !important;
+                line-height: 1.5 !important;
+                color: $bv-footer-text !important;
+            }
+
+            a {
+                color: inherit !important;
+                text-decoration: none !important;
+                transition: color 0.18s ease !important;
+
+                &:hover,
+                &:focus {
+                    color: $bv-footer-text-light !important;
+                    text-decoration: underline !important;
+                }
+            }
+        }
+
+        // Region text styling: automatically inject clean gap and bold country link
+        .bv-footer__region-text,
+        .bv-footer__region-col .cmp-text,
+        .bv-footer__region-col .cmp-text p,
+        .aem-GridColumn:has(a[href*="/us/"]) .cmp-text,
+        .aem-GridColumn:has(a[href*="/us/"]) .cmp-text p {
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 6px !important;
+            margin: 0 !important;
+            color: $bv-footer-text !important;
+
+            p {
+                display: inline-flex !important;
+                align-items: center !important;
+                gap: 6px !important;
+                margin: 0 !important;
+            }
+
+            a {
+                color: inherit !important;
+                text-decoration: none !important;
+                font-weight: 500 !important;
+                transition: color 0.18s ease !important;
+
+                &:hover,
+                &:focus {
+                    color: $bv-footer-text-light !important;
+                    text-decoration: underline !important;
+                }
+            }
+        }
+
+        // Legal links (MUST be inline!)
+        .aem-GridColumn:has(a[href*="privacy-policy"]) .cmp-text,
+        .aem-GridColumn:has(a[href*="disclaimer"]) .cmp-text,
+        .aem-GridColumn:last-child .cmp-text {
+            white-space: normal !important;
+
+            p {
+                margin: 0 !important;
+                font-size: 13px !important;
+                line-height: 1.5 !important;
+                display: inline-block !important;
+                white-space: normal !important;
+            }
+
+            a {
+                display: inline !important;
+                padding: 0 2px !important;
+                color: inherit !important;
+                text-decoration: none !important;
+
+                @media (max-width: 768px) {
+                    display: inline-block !important;
+                    padding: 3px 2px !important;
+                }
+
+                &:hover,
+                &:focus {
+                    color: $bv-footer-text-light !important;
+                    text-decoration: underline !important;
+                }
+            }
+        }
+
+        // Tablet Breakpoint
+        @media (min-width: 769px) and (max-width: 1024px) {
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            flex-wrap: wrap !important;
+            gap: 12px 20px !important;
+
+            > .aem-GridColumn:nth-of-type(1) {
+                text-align: left !important;
+            }
+
+            > .aem-GridColumn:nth-of-type(2),
+            .bv-footer__region-col {
+                text-align: right !important;
+                justify-content: flex-end !important;
+            }
+
+            > .aem-GridColumn:nth-of-type(3),
+            > .aem-GridColumn:has(a[href*="privacy-policy"]) {
+                width: 100% !important;
+                text-align: left !important;
+                justify-content: flex-start !important;
+                margin-top: 6px !important;
+            }
+        }
+
+        // Mobile Breakpoint
+        @media (max-width: 768px) {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 12px !important;
+
+            > .aem-GridColumn,
+            > .aem-GridColumn:nth-of-type(1),
+            > .aem-GridColumn:nth-of-type(2),
+            > .aem-GridColumn:nth-of-type(3),
+            .bv-footer__region-col {
+                width: 100% !important;
+                text-align: left !important;
+                justify-content: flex-start !important;
+            }
+        }
     }
 }

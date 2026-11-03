@@ -7,6 +7,7 @@
     overflow: hidden;
     background: #fff;
     min-height: 400px;
+    margin-top: 20px;
 }
 
 .brainvire-teaser .cmp-teaser__image {
@@ -120,6 +121,7 @@
 .brainvire-teaser--stat-card {
     margin: 0 15px;
 }
+
 .brainvire-teaser--stat-card .brainvire-teaser,
 .brainvire-teaser--stat-card.brainvire-teaser {
     display: flex;

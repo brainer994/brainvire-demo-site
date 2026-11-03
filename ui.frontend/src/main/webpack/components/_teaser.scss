@@ -1,9 +1,486 @@
-.cmp-teaser {}
-.cmp-teaser__image {}
-.cmp-teaser__content {}
-.cmp-teaser__pretitle {}
-.cmp-teaser__title {}
-.cmp-teaser__title-link {}
-.cmp-teaser__description {}
-.cmp-teaser__action-container {}
-.cmp-teaser__action-link {}
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// Brainvire Demo Site - Teaser Component Styles
+// 1. Selected Work Cards with Sticky Stacking Scroll Effect (brainvire-teaser)
+// 2. Capability Cards (brainvire-teaser--capability)
+// Strictly scoped to avoid conflicts with brainvire-teaser--stat-card
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+// ==============================================================================
+// 1. SELECTED WORK CARDS (Sticky Stacking Cards)
+// Policy Style Name: brainvire-teaser
+// Strictly excludes .brainvire-teaser--stat-card and .brainvire-teaser--capability
+// ==============================================================================
+
+.teaser.brainvire-teaser:not(.brainvire-teaser--stat-card):not(.brainvire-teaser--capability),
+.aem-Grid > .teaser.brainvire-teaser:not(.brainvire-teaser--stat-card):not(.brainvire-teaser--capability) {
+    position: -webkit-sticky !important;
+    position: sticky !important;
+    float: none !important; // CRITICAL: AEM Grid float breaks CSS sticky
+    clear: both !important;
+    margin-left: 8.333333% !important; // Matches 1-col offset
+    width: 83.333333% !important;       // Matches 10-col width
+    box-sizing: border-box !important;
+    margin-bottom: 96px !important;    // Ample scroll distance between stacked cards
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+    will-change: transform, top;
+
+    // Staggered top offsets & increasing z-index for natural card deck stacking
+    top: calc(96px + (var(--stack-index, 0) * 14px)) !important;
+    z-index: calc(5 + var(--stack-index, 0)) !important;
+
+    &:nth-of-type(1) { top: 96px !important; z-index: 5 !important; }
+    &:nth-of-type(2) { top: 110px !important; z-index: 6 !important; }
+    &:nth-of-type(3) { top: 124px !important; z-index: 7 !important; }
+    &:nth-of-type(4) { top: 138px !important; z-index: 8 !important; }
+    &:nth-of-type(5) { top: 152px !important; z-index: 9 !important; }
+    &:nth-of-type(6) { top: 166px !important; z-index: 10 !important; }
+
+    &:last-of-type {
+        margin-bottom: 64px !important;
+    }
+
+    @media (max-width: 768px) {
+        position: relative !important;
+        top: 0 !important;
+        margin-left: 0 !important;
+        width: 100% !important;
+        margin-bottom: 32px !important;
+    }
+}
+
+// Inner Card Article for Selected Work ONLY
+.teaser.brainvire-teaser:not(.brainvire-teaser--stat-card):not(.brainvire-teaser--capability) > article.cmp-teaser {
+    position: relative !important;
+    top: auto !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: stretch !important;
+    background: #ffffff !important;
+    border-radius: 24px !important;
+    border: 1px solid rgba(216, 222, 232, 0.85) !important;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.04), 0 20px 45px -15px rgba(11, 31, 58, 0.12) !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+    min-height: 440px !important;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+
+    &:hover {
+        border-color: rgba(22, 102, 224, 0.35) !important;
+        box-shadow: 0 -4px 25px rgba(0, 0, 0, 0.06), 0 28px 60px -15px rgba(11, 31, 58, 0.16) !important;
+    }
+
+    // Left Column: Content
+    .brainvire-teaser__content {
+        flex: 0 0 50% !important;
+        order: 1 !important;
+        padding: 44px 48px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        box-sizing: border-box !important;
+        text-align: left !important;
+        gap: 10px !important;
+    }
+
+    // Right Column: Mockup Image
+    .cmp-teaser__image {
+        flex: 0 0 50% !important;
+        order: 2 !important;
+        overflow: hidden !important;
+        background: #f8fafc !important;
+        position: relative !important;
+
+        .cmp-image {
+            width: 100% !important;
+            height: 100% !important;
+        }
+
+        .cmp-image__image,
+        img {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+            display: block !important;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+
+        &:hover img,
+        &:hover .cmp-image__image {
+            transform: scale(1.03) !important;
+        }
+    }
+
+    // Pretitle row & icons
+    .brainvire-teaser__top-row {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        margin-bottom: 4px !important;
+    }
+
+    .brainvire-teaser__pretitle {
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        margin-bottom: 8px !important;
+    }
+
+    .brainvire-teaser__pretitle-icon {
+        max-height: 24px !important;
+        width: auto !important;
+        object-fit: contain !important;
+    }
+
+    // Stat headline: [Millions], [Magento -> Odoo], [3 Months]
+    .brainvire-teaser__stat {
+        .cmp-teaser__title {
+            font-family: 'BV Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+            font-size: clamp(2.2rem, 3.2vw, 3.4rem) !important;
+            font-weight: 800 !important;
+            line-height: 1.05 !important;
+            letter-spacing: -0.03em !important;
+            color: #0B1F3A !important;
+            margin: 0 !important;
+        }
+
+        .cmp-teaser__description {
+            font-family: 'BV Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+            font-size: 1rem !important;
+            font-weight: 600 !important;
+            color: #111827 !important;
+            margin: 6px 0 0 0 !important;
+
+            p {
+                margin: 0 !important;
+            }
+        }
+    }
+
+    // Secondary Title: Texas Energy Provider, Bay Alarm Medical, Shop LC
+    .brainvire-teaser__secondary-title {
+        font-family: 'BV Serif', Georgia, 'Times New Roman', serif !important;
+        font-size: clamp(1.4rem, 1.8vw, 1.8rem) !important;
+        font-weight: 600 !important;
+        color: #0B1F3A !important;
+        line-height: 1.25 !important;
+        letter-spacing: -0.01em !important;
+        margin: 8px 0 0 0 !important;
+    }
+
+    // Supporting description text
+    .brainvire-teaser__supporting-description {
+        font-family: 'BV Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+        font-size: 0.95rem !important;
+        line-height: 1.6 !important;
+        color: #4B5563 !important;
+        margin: 4px 0 8px 0 !important;
+    }
+
+    // Footer: Metadata left + CTA link
+    .brainvire-teaser__footer {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 12px !important;
+        margin-top: auto !important;
+        padding-top: 12px !important;
+    }
+
+    .brainvire-teaser__metadata {
+        font-family: 'BV Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+        font-size: 0.75rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.08em !important;
+        text-transform: uppercase !important;
+        color: #6B7280 !important;
+    }
+
+    .cmp-teaser__action-container {
+        margin: 0 !important;
+    }
+
+    .cmp-teaser__action-link {
+        font-family: 'BV Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 6px !important;
+        font-size: 0.95rem !important;
+        font-weight: 700 !important;
+        color: #1666E0 !important;
+        text-decoration: none !important;
+        transition: gap 0.25s ease, color 0.2s ease !important;
+
+        &:hover {
+            color: #0F57C9 !important;
+            gap: 10px !important;
+        }
+    }
+
+    // Mobile layout
+    @media (max-width: 768px) {
+        flex-direction: column !important;
+        min-height: unset !important;
+        border-radius: 18px !important;
+
+        .brainvire-teaser__content {
+            flex: 1 1 auto !important;
+            order: 2 !important;
+            padding: 28px 24px !important;
+        }
+
+        .cmp-teaser__image {
+            flex: 0 0 240px !important;
+            order: 1 !important;
+            min-height: 220px !important;
+            max-height: 260px !important;
+        }
+    }
+}
+
+// ==============================================================================
+// 2. CAPABILITY CARDS (Capabilities Section: "Reimagine. Engineer. Modernize. Run.")
+// Policy Style Name: brainvire-teaser--capability
+// Aliases: brainvire-teaser--capability-card, brainvire-capability-card
+// ==============================================================================
+
+// Grid container: 1-col offset on left (8.333333%), 1-col offset on right (width: 83.333333%),
+// matching the 10-column layout of the entire site, with 24px gap between cards.
+.aem-Grid:has(> .brainvire-teaser--capability),
+.aem-Grid:has(> .teaser.brainvire-teaser--capability),
+#container-b5213f5bab .aem-Grid {
+    margin-left: 8.333333% !important;
+    width: 83.333333% !important;
+    max-width: 83.333333% !important;
+    box-sizing: border-box !important;
+    float: none !important;
+    clear: both !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: stretch !important;
+    gap: 24px !important;
+
+    // Suppress AEM grid clearfix pseudo-elements which become flex items
+    &::before,
+    &::after {
+        display: none !important;
+        content: none !important;
+    }
+
+    @media (max-width: 992px) {
+        margin-left: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 20px !important;
+        gap: 20px !important;
+    }
+}
+
+.teaser.brainvire-teaser--capability,
+.brainvire-teaser--capability {
+    flex: 1 1 calc((100% - 48px) / 3) !important;
+    max-width: calc((100% - 48px) / 3) !important;
+    width: calc((100% - 48px) / 3) !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    float: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+
+    @media (max-width: 992px) {
+        flex: 1 1 100% !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        margin-bottom: 20px !important;
+    }
+
+    article.cmp-teaser,
+    .cmp-teaser {
+        display: flex !important;
+        flex-direction: column !important;
+        border: 1px solid #E5E7EB !important;
+        border-top: 3px solid #1666E0 !important;
+        border-radius: 8px !important;
+        background: #ffffff !important;
+        padding: 36px 32px 28px !important;
+        box-sizing: border-box !important;
+        width: 100% !important;
+        height: 100% !important;
+        min-height: 480px !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03) !important;
+        transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease !important;
+        position: relative !important;
+        top: auto !important;
+
+        &:hover {
+            transform: translateY(-4px) !important;
+            box-shadow: 0 16px 36px -10px rgba(11, 31, 58, 0.1) !important;
+            border-color: #CBD5E1 !important;
+            border-top-color: #1666E0 !important;
+        }
+
+        // Hide image on capability card variant
+        .cmp-teaser__image {
+            display: none !important;
+        }
+
+        // Content wrapper
+        .brainvire-teaser__content {
+            flex: 1 1 auto !important;
+            display: flex !important;
+            flex-direction: column !important;
+            padding: 0 !important;
+            gap: 0 !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+            text-align: left !important;
+        }
+
+        // Top row
+        .brainvire-teaser__top-row {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            margin-bottom: 16px !important;
+        }
+
+        // Number: /01, /02, /03
+        .brainvire-teaser__pretitle {
+            margin: 0 0 14px 0 !important;
+            display: block !important;
+
+            .cmp-teaser__pretitle {
+                font-family: 'BV Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+                font-size: 14px !important;
+                font-weight: 700 !important;
+                color: #111827 !important;
+                letter-spacing: 0.05em !important;
+                margin: 0 !important;
+                display: inline-flex !important;
+                align-items: center !important;
+
+                &::before {
+                    content: '/';
+                    color: #1666E0 !important;
+                    font-weight: 800 !important;
+                    margin-right: 3px !important;
+                    font-size: 1.1em !important;
+                }
+            }
+        }
+
+        // Main Title & Tagline
+        .brainvire-teaser__stat {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            text-align: left !important;
+
+            .cmp-teaser__title {
+                font-family: 'BV Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+                font-size: 24px !important;
+                font-weight: 700 !important;
+                color: #111827 !important;
+                line-height: 1.25 !important;
+                letter-spacing: -0.01em !important;
+                margin: 0 0 6px 0 !important;
+            }
+
+            .cmp-teaser__description {
+                font-family: 'BV Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+                font-size: 14px !important;
+                font-weight: 600 !important;
+                color: #1666E0 !important;
+                margin: 0 !important;
+                line-height: 1.4 !important;
+
+                p {
+                    margin: 0 !important;
+                    color: inherit !important;
+                    font-size: inherit !important;
+                    font-weight: inherit !important;
+                }
+            }
+        }
+
+        // Secondary Title
+        .brainvire-teaser__secondary-title {
+            font-family: 'BV Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+            font-size: 15px !important;
+            font-weight: 500 !important;
+            color: #374151 !important;
+            line-height: 1.55 !important;
+            margin: 0 0 24px 0 !important;
+        }
+
+        // Supporting Description: Clean list items with blue slashes
+        .brainvire-teaser__supporting-description {
+            font-family: 'BV Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+            font-size: 13.5px !important;
+            line-height: 2.1 !important;
+            color: #4B5563 !important;
+            margin: 0 0 32px 0 !important;
+            white-space: pre-line !important;
+
+            .brainvire-capability__item {
+                display: flex !important;
+                align-items: flex-start !important;
+                gap: 8px !important;
+                margin-bottom: 8px !important;
+                font-size: 13.5px !important;
+                color: #374151 !important;
+                line-height: 1.5 !important;
+            }
+
+            .brainvire-capability__slash {
+                color: #1666E0 !important;
+                font-weight: 800 !important;
+                flex-shrink: 0 !important;
+                font-size: 14px !important;
+            }
+        }
+
+        // Footer: Action link aligned at bottom
+        .brainvire-teaser__footer {
+            display: flex !important;
+            flex-direction: row !important;
+            align-items: center !important;
+            margin-top: auto !important;
+            padding-top: 16px !important;
+            border-top: 1px solid #F1F5F9 !important;
+        }
+
+        .cmp-teaser__action-container {
+            margin: 0 !important;
+            width: 100% !important;
+        }
+
+        .cmp-teaser__action-link {
+            font-family: 'BV Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+            font-size: 14px !important;
+            font-weight: 700 !important;
+            color: #111827 !important;
+            text-decoration: none !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 6px !important;
+            transition: color 0.2s ease, gap 0.25s ease !important;
+
+            &::after {
+                content: '→' !important;
+                font-size: 1.15em !important;
+                color: inherit !important;
+                transition: transform 0.25s ease !important;
+            }
+
+            &:hover {
+                color: #1666E0 !important;
+                gap: 10px !important;
+
+                &::after {
+                    transform: translateX(4px) !important;
+                }
+            }
+        }
+    }
+}

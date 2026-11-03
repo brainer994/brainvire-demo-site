@@ -1,3 +1,149 @@
-.cmp-title {}
-.cmp-title__text {}
-.cmp-title__link {}
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// Brainvire Demo Site - Title Component Styles
+// Includes Eyebrow & Section Title styles matching brainvire.com
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.cmp-title {
+    margin: 0;
+    padding: 0;
+
+    .cmp-title__text {
+        margin: 0;
+    }
+}
+
+// ==============================================================================
+// 1. EYEBROW STYLE (Title Component)
+// Policy Class: cmp-title--eyebrow (or eyebrow, bv-eyebrow)
+// Matches brainvire.com: "/ SELECTED WORK", "/ CAPABILITIES"
+// ==============================================================================
+.title.cmp-title--eyebrow,
+.title.eyebrow,
+.title.bv-eyebrow,
+.aem-Grid > .title.cmp-title--eyebrow,
+.aem-Grid > .cmp-title--eyebrow {
+    display: block;
+    margin: 0 0 12px 0;
+    box-sizing: border-box;
+
+    .cmp-title__text {
+        font-family: 'BV Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
+        font-size: 13px !important;
+        font-weight: 700 !important;
+        line-height: 1.2 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.14em !important;
+        color: #6F7680 !important;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin: 0;
+
+        // Signature Brainvire Blue Slash Prefix
+        &::before {
+            content: '/';
+            color: #1666E0;
+            font-weight: 800;
+            font-size: 1.2em;
+            line-height: 1;
+        }
+
+        .cmp-title__link {
+            color: inherit;
+            text-decoration: none;
+        }
+    }
+}
+
+// 1-col offset for Eyebrow in Selected Work section
+.aem-Grid > .title.cmp-title--eyebrow:has(~ .teaser.brainvire-teaser:not(.brainvire-teaser--capability):not(.brainvire-teaser--stat-card)),
+.aem-Grid > .title.eyebrow:has(~ .teaser.brainvire-teaser:not(.brainvire-teaser--capability):not(.brainvire-teaser--stat-card)) {
+    @media (min-width: 769px) {
+        margin-left: 8.333333% !important;
+        width: 83.333333% !important;
+        float: none !important;
+        clear: both !important;
+    }
+}
+
+// 1-col offset for Eyebrow in Capabilities section
+.title.cmp-title--eyebrow:has(~ .container .brainvire-teaser--capability),
+.title.eyebrow:has(~ .container .brainvire-teaser--capability),
+.title.bv-eyebrow:has(~ .container .brainvire-teaser--capability),
+.cmp-container:has(> .container .brainvire-teaser--capability) > .title.cmp-title--eyebrow,
+.cmp-container:has(> .container .brainvire-teaser--capability) > .title.eyebrow,
+.cmp-container:has(> .container .brainvire-teaser--capability) > .title.bv-eyebrow,
+#container-913edcb721 > .title.cmp-title--eyebrow,
+#container-913edcb721 > .title.eyebrow,
+#container-913edcb721 > .title:first-child {
+    @media (min-width: 769px) {
+        margin-left: 8.333333% !important;
+        width: 83.333333% !important;
+        float: none !important;
+        clear: both !important;
+    }
+}
+
+// ==============================================================================
+// 2. SECTION TITLE STYLE (Title Component)
+// Policy Class: cmp-title--section-title (or section-title, bv-section-title)
+// Matches brainvire.com: "Outcomes, on the record.", "Reimagine. Engineer. Modernize. Run."
+// ==============================================================================
+.title.cmp-title--section-title,
+.title.section-title,
+.title.bv-section-title,
+.title.cmp-title--editorial,
+.aem-Grid > .title.cmp-title--section-title,
+.aem-Grid > .cmp-title--section-title {
+    margin: 0 0 16px 0;
+    box-sizing: border-box;
+
+    .cmp-title__text {
+        font-family: 'BV Serif', Georgia, Cambria, 'Times New Roman', serif !important;
+        font-size: clamp(32px, 3.8vw, 54px) !important;
+        font-weight: 600 !important;
+        line-height: 1.12 !important;
+        letter-spacing: -0.02em !important;
+        color: #0B1F3A !important;
+        margin: 0;
+
+        .cmp-title__link {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.2s ease;
+
+            &:hover {
+                color: #1666E0;
+            }
+        }
+    }
+}
+
+// 1-col offset for Section Title in Selected Work section
+.aem-Grid > .title.cmp-title--section-title:has(~ .teaser.brainvire-teaser:not(.brainvire-teaser--capability):not(.brainvire-teaser--stat-card)),
+.aem-Grid > .title.section-title:has(~ .teaser.brainvire-teaser:not(.brainvire-teaser--capability):not(.brainvire-teaser--stat-card)) {
+    @media (min-width: 769px) {
+        margin-left: 8.333333% !important;
+        width: 83.333333% !important;
+        float: none !important;
+        clear: both !important;
+    }
+}
+
+// 1-col offset for Section Title in Capabilities section
+.title.cmp-title--section-title:has(~ .container .brainvire-teaser--capability),
+.title.section-title:has(~ .container .brainvire-teaser--capability),
+.title.bv-section-title:has(~ .container .brainvire-teaser--capability),
+.cmp-container:has(> .container .brainvire-teaser--capability) > .title.cmp-title--section-title,
+.cmp-container:has(> .container .brainvire-teaser--capability) > .title.section-title,
+.cmp-container:has(> .container .brainvire-teaser--capability) > .title.bv-section-title,
+#container-913edcb721 > .title.cmp-title--section-title,
+#container-913edcb721 > .title.section-title,
+#container-913edcb721 > .title:nth-child(2) {
+    @media (min-width: 769px) {
+        margin-left: 8.333333% !important;
+        width: 83.333333% !important;
+        float: none !important;
+        clear: both !important;
+    }
+}

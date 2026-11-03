@@ -1,5 +1,9 @@
-
 @import 'variables';
 @import 'base';
 @import '../components/**/*.scss';
+@import '../components/contentfragment';
+@import '../components/title';
+@import '../components/text';
+@import '../components/teaser';
 @import './styles/*.scss';
+@import './styles/experiencefragment_footer';

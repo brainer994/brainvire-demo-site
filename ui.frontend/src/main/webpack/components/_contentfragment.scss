@@ -1,9 +1,393 @@
-.cmp-contentfragment {}
-// .cmp-contentfragment--<name>{}
-.cmp-contentfragment__title {}
-.cmp-contentfragment__description {}
-.cmp-contentfragment__elements {}
-.cmp-contentfragment__element {}
-// .cmp-contentfragment__element--myElementName {}
-.cmp-contentfragment__element-title {}
-.cmp-contentfragment__element-value {}
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// Brainvire Demo Site - Content Fragment Styles
+// Includes Testimonial Card Design for AEM Policy / Style System
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.cmp-contentfragment {
+    // Base core component styles
+}
+
+// ==============================================================================
+// TESTIMONIAL CONTENT FRAGMENT DESIGN
+// Can be applied manually via AEM Policy Style System or author dialog:
+// Classes supported:
+//   - cmp-contentfragment--testimonial
+//   - cmp-contentfragment--testimonial-card
+//   - testimonial-card
+// Auto-applied to any Content Fragment using the 'testimonial' model
+// ==============================================================================
+
+.cmp-contentfragment--testimonial,
+.cmp-contentfragment--testimonial-card,
+.testimonial-card,
+.contentfragment.cmp-contentfragment--testimonial .cmp-contentfragment,
+.contentfragment.cmp-contentfragment--testimonial-card .cmp-contentfragment,
+.contentfragment.testimonial-card .cmp-contentfragment,
+.cmp-contentfragment[data-cmp-contentfragment-model*="testimonial"] {
+    position: relative;
+    background: #ffffff;
+    border-radius: 20px;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    box-shadow: 0 10px 30px -5px rgba(0, 25, 61, 0.07), 0 20px 25px -5px rgba(0, 0, 0, 0.03);
+    padding: 40px 44px 36px;
+    margin: 2.5rem auto;
+    max-width: 840px;
+    box-sizing: border-box;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+
+    // Top Brand Accent Line
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #00193d 0%, #0162f4 50%, #00d2ff 100%);
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        z-index: 2;
+    }
+
+    // Watermark Quote Icon in Background
+    &::after {
+        content: '';
+        position: absolute;
+        top: 24px;
+        right: 32px;
+        width: 72px;
+        height: 60px;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230162f4' opacity='0.08'%3E%3Cpath d='M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-size: contain;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    // Interactive Hover State
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 40px -10px rgba(0, 25, 61, 0.12), 0 10px 20px -5px rgba(1, 98, 244, 0.08);
+        border-color: rgba(1, 98, 244, 0.35);
+    }
+
+    // Redundant Title hidden (Client Name is presented in the author attribution footer)
+    .cmp-contentfragment__title {
+        display: none;
+    }
+
+    // Hide all raw dt field labels ("Quote", "Client Name", "Job Title", etc.)
+    .cmp-contentfragment__element-title {
+        display: none !important;
+    }
+
+    // Layout Container for Elements
+    .cmp-contentfragment__elements {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        position: relative;
+        z-index: 1;
+        margin: 0;
+        padding: 0;
+    }
+
+    // 1. Ratings (5-star amber gold display)
+    .cmp-contentfragment__element--ratings {
+        order: 1;
+        flex: 0 0 auto;
+        margin-bottom: 24px;
+
+        .cmp-contentfragment__element-value {
+            margin: 0;
+            display: inline-flex;
+            align-items: center;
+            font-size: 0;
+            line-height: 1;
+
+            &::before {
+                content: "★★★★★";
+                font-size: 1.25rem;
+                letter-spacing: 3px;
+                color: #f59e0b;
+                filter: drop-shadow(0 1px 2px rgba(245, 158, 11, 0.3));
+            }
+        }
+    }
+
+    // 2. Industry Badge (Pill style top right)
+    .cmp-contentfragment__element--industry {
+        order: 2;
+        margin-left: auto;
+        flex: 0 0 auto;
+        margin-bottom: 24px;
+
+        .cmp-contentfragment__element-value {
+            margin: 0;
+            display: inline-flex;
+            align-items: center;
+            background: #eff6ff;
+            color: #0162f4;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 5px 14px;
+            border-radius: 9999px;
+            border: 1px solid rgba(1, 98, 244, 0.2);
+            box-shadow: 0 1px 3px rgba(1, 98, 244, 0.06);
+        }
+    }
+
+    // 3. Testimonial Quote
+    .cmp-contentfragment__element--quote {
+        order: 3;
+        width: 100%;
+        flex: 0 0 100%;
+        margin: 0 0 28px 0;
+        padding-bottom: 28px;
+        border-bottom: 1px solid #f1f5f9;
+
+        .cmp-contentfragment__element-value {
+            margin: 0;
+
+            p {
+                font-size: 1.2rem;
+                line-height: 1.7;
+                color: #1e293b;
+                font-weight: 400;
+                margin: 0;
+                letter-spacing: -0.01em;
+
+                &::before {
+                    content: "“";
+                    font-family: Georgia, serif;
+                    font-size: 1.6rem;
+                    font-weight: 700;
+                    color: #0162f4;
+                    margin-right: 4px;
+                    line-height: 0;
+                    vertical-align: -2px;
+                }
+
+                &::after {
+                    content: "”";
+                    font-family: Georgia, serif;
+                    font-size: 1.6rem;
+                    font-weight: 700;
+                    color: #0162f4;
+                    margin-left: 4px;
+                    line-height: 0;
+                    vertical-align: -2px;
+                }
+            }
+        }
+    }
+
+    // 4. Client Name (with profile avatar)
+    .cmp-contentfragment__element--clientName {
+        order: 4;
+        width: 100%;
+        flex: 0 0 100%;
+        position: relative;
+        padding-left: 58px;
+
+        &::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 1px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0162f4 0%, #00193d 100%);
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/%3E%3C/svg%3E"), linear-gradient(135deg, #0162f4 0%, #00193d 100%);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 24px 24px, 100%;
+            box-shadow: 0 4px 10px rgba(1, 98, 244, 0.22);
+            border: 2px solid #ffffff;
+        }
+
+        .cmp-contentfragment__element-value {
+            margin: 0;
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: #00193d;
+            letter-spacing: -0.01em;
+            line-height: 1.3;
+        }
+    }
+
+    // 5. Job Title
+    .cmp-contentfragment__element--jobtitle {
+        order: 5;
+        flex: 0 0 auto;
+        padding-left: 58px;
+        margin-top: 4px;
+
+        .cmp-contentfragment__element-value {
+            margin: 0;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #64748b;
+            line-height: 1.4;
+        }
+    }
+
+    // 6. Company
+    .cmp-contentfragment__element--company {
+        order: 6;
+        flex: 0 0 auto;
+        margin-top: 4px;
+
+        .cmp-contentfragment__element-value {
+            margin: 0;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #0162f4;
+            line-height: 1.4;
+
+            &::before {
+                content: "•";
+                margin: 0 7px;
+                color: #cbd5e1;
+                font-weight: 400;
+            }
+        }
+    }
+
+    // Responsive Adjustments
+    @media (max-width: 640px) {
+        padding: 28px 22px 26px;
+        border-radius: 16px;
+
+        &::before {
+            border-top-left-radius: 16px;
+            border-top-right-radius: 16px;
+        }
+
+        &::after {
+            width: 48px;
+            height: 40px;
+            top: 20px;
+            right: 20px;
+        }
+
+        .cmp-contentfragment__element--quote .cmp-contentfragment__element-value p {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .cmp-contentfragment__element--company {
+            width: 100%;
+            flex: 0 0 100%;
+            padding-left: 58px;
+
+            .cmp-contentfragment__element-value::before {
+                content: "at ";
+                margin: 0 4px 0 0;
+            }
+        }
+    }
+}
+
+// ==============================================================================
+// STYLE SYSTEM VARIATIONS (Configurable in Component Policy)
+// ==============================================================================
+
+// Variation 1: Dark Navy Theme (matches Brainvire brand footer/hero)
+// Class: cmp-contentfragment--testimonial-dark or testimonial-card--dark
+.cmp-contentfragment--testimonial-dark,
+.testimonial-card--dark,
+.contentfragment.cmp-contentfragment--testimonial-dark .cmp-contentfragment,
+.contentfragment.testimonial-card--dark .cmp-contentfragment {
+    background: #00193d !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35) !important;
+
+    &::before {
+        background: linear-gradient(90deg, #0162f4 0%, #00d2ff 100%) !important;
+    }
+
+    &::after {
+        opacity: 0.04 !important;
+        filter: invert(1);
+    }
+
+    .cmp-contentfragment__element--industry .cmp-contentfragment__element-value {
+        background: rgba(1, 98, 244, 0.25) !important;
+        color: #60a5fa !important;
+        border-color: rgba(96, 165, 250, 0.3) !important;
+    }
+
+    .cmp-contentfragment__element--quote {
+        border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+
+        .cmp-contentfragment__element-value p {
+            color: #f1f5f9 !important;
+
+            &::before,
+            &::after {
+                color: #00d2ff !important;
+            }
+        }
+    }
+
+    .cmp-contentfragment__element--clientName {
+        &::before {
+            border-color: #00193d !important;
+            box-shadow: 0 4px 12px rgba(0, 210, 255, 0.3) !important;
+        }
+
+        .cmp-contentfragment__element-value {
+            color: #ffffff !important;
+        }
+    }
+
+    .cmp-contentfragment__element--jobtitle .cmp-contentfragment__element-value {
+        color: #94a3b8 !important;
+    }
+
+    .cmp-contentfragment__element--company .cmp-contentfragment__element-value {
+        color: #60a5fa !important;
+
+        &::before {
+            color: #475569 !important;
+        }
+    }
+}
+
+// Variation 2: Featured Accent (Glowing gradient border)
+// Class: cmp-contentfragment--testimonial-featured or testimonial-card--featured
+.cmp-contentfragment--testimonial-featured,
+.testimonial-card--featured,
+.contentfragment.cmp-contentfragment--testimonial-featured .cmp-contentfragment,
+.contentfragment.testimonial-card--featured .cmp-contentfragment {
+    border: 2px solid transparent !important;
+    background-image: linear-gradient(#ffffff, #ffffff), linear-gradient(135deg, #0162f4, #00d2ff) !important;
+    background-origin: border-box !important;
+    background-clip: padding-box, border-box !important;
+    box-shadow: 0 20px 45px -10px rgba(1, 98, 244, 0.2) !important;
+}
+
+// Variation 3: Minimal Left Accent (Great for sidebars or clean editorial sections)
+// Class: cmp-contentfragment--testimonial-minimal or testimonial-card--minimal
+.cmp-contentfragment--testimonial-minimal,
+.testimonial-card--minimal,
+.contentfragment.cmp-contentfragment--testimonial-minimal .cmp-contentfragment,
+.contentfragment.testimonial-card--minimal .cmp-contentfragment {
+    border: none !important;
+    border-left: 4px solid #0162f4 !important;
+    border-radius: 0 16px 16px 0 !important;
+    box-shadow: 0 4px 20px rgba(0, 25, 61, 0.05) !important;
+    background: #f8fafc !important;
+
+    &::before {
+        display: none !important;
+    }
+}

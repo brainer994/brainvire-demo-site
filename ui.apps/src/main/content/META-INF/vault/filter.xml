@@ -3,6 +3,7 @@
     <filter root="/apps/brainvire-demo-site/clientlibs"/>
     <filter root="/apps/brainvire-demo-site/components"/>
     <filter root="/apps/brainvire-demo-site/i18n"/>
+    <filter root="/apps/brainvire-demo-site/workflow"/>
     <filter root="/apps/msm/brainvire-demo-site_blueprint" mode="merge"/>
     <filter root="/oak:index/diff.index"/>
 </workspaceFilter>
