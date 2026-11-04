@@ -1,6 +1,7 @@
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Brainvire Demo Site - Title Component Styles
 // Includes Eyebrow & Section Title styles matching brainvire.com
+// Macro layout & centering managed by parent Container
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .cmp-title {
@@ -25,6 +26,7 @@
     display: block;
     margin: 0 0 12px 0;
     box-sizing: border-box;
+    width: 100%;
 
     .cmp-title__text {
         font-family: 'BV Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
@@ -55,35 +57,6 @@
     }
 }
 
-// 1-col offset for Eyebrow in Selected Work section
-.aem-Grid > .title.cmp-title--eyebrow:has(~ .teaser.brainvire-teaser:not(.brainvire-teaser--capability):not(.brainvire-teaser--stat-card)),
-.aem-Grid > .title.eyebrow:has(~ .teaser.brainvire-teaser:not(.brainvire-teaser--capability):not(.brainvire-teaser--stat-card)) {
-    @media (min-width: 769px) {
-        margin-left: 8.333333% !important;
-        width: 83.333333% !important;
-        float: none !important;
-        clear: both !important;
-    }
-}
-
-// 1-col offset for Eyebrow in Capabilities section
-.title.cmp-title--eyebrow:has(~ .container .brainvire-teaser--capability),
-.title.eyebrow:has(~ .container .brainvire-teaser--capability),
-.title.bv-eyebrow:has(~ .container .brainvire-teaser--capability),
-.cmp-container:has(> .container .brainvire-teaser--capability) > .title.cmp-title--eyebrow,
-.cmp-container:has(> .container .brainvire-teaser--capability) > .title.eyebrow,
-.cmp-container:has(> .container .brainvire-teaser--capability) > .title.bv-eyebrow,
-#container-913edcb721 > .title.cmp-title--eyebrow,
-#container-913edcb721 > .title.eyebrow,
-#container-913edcb721 > .title:first-child {
-    @media (min-width: 769px) {
-        margin-left: 8.333333% !important;
-        width: 83.333333% !important;
-        float: none !important;
-        clear: both !important;
-    }
-}
-
 // ==============================================================================
 // 2. SECTION TITLE STYLE (Title Component)
 // Policy Class: cmp-title--section-title (or section-title, bv-section-title)
@@ -97,6 +70,7 @@
 .aem-Grid > .cmp-title--section-title {
     margin: 0 0 16px 0;
     box-sizing: border-box;
+    width: 100%;
 
     .cmp-title__text {
         font-family: 'BV Serif', Georgia, Cambria, 'Times New Roman', serif !important;
@@ -116,34 +90,5 @@
                 color: #1666E0;
             }
         }
-    }
-}
-
-// 1-col offset for Section Title in Selected Work section
-.aem-Grid > .title.cmp-title--section-title:has(~ .teaser.brainvire-teaser:not(.brainvire-teaser--capability):not(.brainvire-teaser--stat-card)),
-.aem-Grid > .title.section-title:has(~ .teaser.brainvire-teaser:not(.brainvire-teaser--capability):not(.brainvire-teaser--stat-card)) {
-    @media (min-width: 769px) {
-        margin-left: 8.333333% !important;
-        width: 83.333333% !important;
-        float: none !important;
-        clear: both !important;
-    }
-}
-
-// 1-col offset for Section Title in Capabilities section
-.title.cmp-title--section-title:has(~ .container .brainvire-teaser--capability),
-.title.section-title:has(~ .container .brainvire-teaser--capability),
-.title.bv-section-title:has(~ .container .brainvire-teaser--capability),
-.cmp-container:has(> .container .brainvire-teaser--capability) > .title.cmp-title--section-title,
-.cmp-container:has(> .container .brainvire-teaser--capability) > .title.section-title,
-.cmp-container:has(> .container .brainvire-teaser--capability) > .title.bv-section-title,
-#container-913edcb721 > .title.cmp-title--section-title,
-#container-913edcb721 > .title.section-title,
-#container-913edcb721 > .title:nth-child(2) {
-    @media (min-width: 769px) {
-        margin-left: 8.333333% !important;
-        width: 83.333333% !important;
-        float: none !important;
-        clear: both !important;
     }
 }

@@ -1,6 +1,7 @@
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Brainvire Demo Site - Text Component Styles
 // Includes Lead / Section Subhead style matching brainvire.com
+// Macro layout & centering managed by parent Container
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .cmp-text {
@@ -9,34 +10,24 @@
 }
 
 // ==============================================================================
-// 3. LEAD / SUBHEAD TEXT STYLE (Text Component)
+// LEAD / SUBHEAD TEXT STYLE (Text Component)
 // Policy Class: cmp-text--lead (or text-lead, bv-text-lead, section-subhead)
 // Matches brainvire.com: "Every engagement below is documented, with the numbers our clients publish."
-// Strictly aligned with the 10-column offset-1 cards for Selected Work section
 // ==============================================================================
 .text.cmp-text--lead,
 .text.text-lead,
 .text.bv-text-lead,
 .text.section-subhead,
 .aem-Grid > .text.cmp-text--lead,
-.aem-Grid > .title.cmp-title--eyebrow ~ .text:not(.teaser ~ .text),
-.text:has(~ .container .brainvire-teaser--capability),
-.cmp-container:has(> .container .brainvire-teaser--capability) > .text,
-#container-913edcb721 > .text {
+.aem-Grid > .text.text-lead,
+.aem-Grid > .text.bv-text-lead,
+.aem-Grid > .text.section-subhead {
     margin-bottom: 36px;
     box-sizing: border-box;
-
-    @media (min-width: 769px) {
-        margin-left: 8.333333% !important;
-        width: 83.333333% !important;
-        float: none !important;
-        clear: both !important;
-    }
-
-    @media (max-width: 768px) {
-        margin-left: 0 !important;
-        width: 100% !important;
-    }
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
 
     p,
     .cmp-text__paragraph {

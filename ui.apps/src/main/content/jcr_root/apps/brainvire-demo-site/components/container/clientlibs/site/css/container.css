@@ -30,3 +30,37 @@
     .container--py-lg .cmp-container  { padding-top: 40px;  padding-bottom: 40px; }
     .container--py-xl .cmp-container  { padding-top: 64px;  padding-bottom: 64px; }
 }
+
+/* Hero Banner Full Bleed & Zero Padding */
+.container--hero,
+.container--no-padding,
+.container--full-bleed,
+.container:has(.herobanner),
+.container:has(.hero-banner) {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.container--hero > .cmp-container,
+.container--no-padding > .cmp-container,
+.container--full-bleed > .cmp-container,
+.container:has(.herobanner) > .cmp-container,
+.container:has(.hero-banner) > .cmp-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.container--hero > .cmp-container > .aem-Grid,
+.container--no-padding > .cmp-container > .aem-Grid,
+.container--full-bleed > .cmp-container > .aem-Grid,
+.container:has(.herobanner) > .cmp-container > .aem-Grid,
+.container:has(.hero-banner) > .cmp-container > .aem-Grid {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}

@@ -1,1 +1,285 @@
-.cmp-container {}
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// Brainvire Demo Site - Container Component Styles
+// Reference: brainvire.com live site
+// - Section Container: Full-width background (100% viewport)
+// - Top & bottom padding: 56px on ALL devices for standard content sections
+// - Content Grid: Parallel to Header (.bv-header__container: max-width 1320px, margin: 0 auto, padding: 0 40px)
+// - Hero Banner Container: 100% Full Width, 0 padding (Edge-to-edge flush with header)
+// - Nested Containers: reset padding to 0, width: 100%
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+// 1. Root and Main Wrappers (Span full screen so child sections can bleed edge-to-edge)
+.root.container,
+.root > .cmp-container,
+main.container,
+main > .cmp-container {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+
+    > .aem-Grid {
+        max-width: 100% !important;
+        width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+}
+
+// 2. Header and Navigation wrapper reset (Ensure flush top under sticky header)
+header.experiencefragment,
+.experiencefragment-header {
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+// 3. Hero Banner Container - Edge-to-Edge Full Width with ZERO Padding
+// Automatically matches any container holding herobanner, or with Style System classes
+.container--hero,
+.container--no-padding,
+.container--full-bleed,
+.container:has(.herobanner),
+.container:has(.hero-banner),
+main > .cmp-container > .aem-Grid > .container:has(.herobanner),
+main > .cmp-container > .aem-Grid > .container:has(.hero-banner),
+.root > .cmp-container > .aem-Grid > .container:has(.herobanner),
+.root > .cmp-container > .aem-Grid > .container:has(.hero-banner) {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    float: none !important;
+    clear: both !important;
+
+    > .cmp-container {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+
+        > .aem-Grid {
+            width: 100% !important;
+            max-width: 100% !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            float: none !important;
+        }
+
+        > :not(.aem-Grid) {
+            width: 100% !important;
+            max-width: 100% !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+    }
+}
+
+// Ensure herobanner itself is 100% full width and has no side margins/paddings
+.herobanner,
+.hero-banner,
+.herobanner.aem-GridColumn,
+.aem-Grid > .herobanner,
+.cmp-container > .herobanner,
+.cmp-container > .aem-Grid > .herobanner,
+.cmp-container > .hero-banner,
+.cmp-container > .aem-Grid > .hero-banner {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    float: none !important;
+}
+
+// 4. Section Containers (Style System: .container--section, or top-level containers in page grid)
+// Excludes Hero Banner containers so they never receive 56px padding or 1320px restriction
+.container--section,
+.container--header-aligned,
+.container--boxed,
+main > .cmp-container > .aem-Grid > .container:not(.container--nested):not(.container--full-width):not(.container--hero):not(.container--no-padding):not(.container--full-bleed):not(:has(.herobanner)):not(:has(.hero-banner)),
+.root > .cmp-container > .aem-Grid > .container:not(.container--nested):not(.container--full-width):not(.container--hero):not(.container--no-padding):not(.container--full-bleed):not(:has(.herobanner)):not(:has(.hero-banner)),
+.aem-Grid > .container--section,
+.aem-Grid > .container--header-aligned,
+.aem-Grid > .container--boxed {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    box-sizing: border-box !important;
+    clear: both !important;
+    float: none !important;
+
+    // Full-width background wrapper with 56px top/bottom padding
+    > .cmp-container {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-top: 56px !important;
+        padding-bottom: 56px !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
+
+        // Content Grid: Parallel to Header (.bv-header__container: 1320px max-width, 40px gutters)
+        > .aem-Grid {
+            max-width: 1320px !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+            padding-left: 40px !important;
+            padding-right: 40px !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+            float: none !important;
+        }
+
+        // Direct children if not in an aem-Grid
+        > :not(.aem-Grid) {
+            max-width: 1320px !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+            padding-left: 40px !important;
+            padding-right: 40px !important;
+            box-sizing: border-box !important;
+        }
+    }
+}
+
+// 5. Responsive Horizontal Gutters (Matching Header on tablet & mobile)
+// Padding top and bottom STAYS 56px on ALL devices as required
+@media (max-width: 768px) {
+    .container--section,
+    .container--header-aligned,
+    .container--boxed,
+    main > .cmp-container > .aem-Grid > .container:not(.container--nested):not(.container--full-width):not(.container--hero):not(.container--no-padding):not(.container--full-bleed):not(:has(.herobanner)):not(:has(.hero-banner)),
+    .root > .cmp-container > .aem-Grid > .container:not(.container--nested):not(.container--full-width):not(.container--hero):not(.container--no-padding):not(.container--full-bleed):not(:has(.herobanner)):not(:has(.hero-banner)) {
+        > .cmp-container {
+            padding-top: 56px !important;    // 56px on all devices
+            padding-bottom: 56px !important; // 56px on all devices
+
+            > .aem-Grid,
+            > :not(.aem-Grid) {
+                padding-left: 20px !important;
+                padding-right: 20px !important;
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .container--section,
+    .container--header-aligned,
+    .container--boxed,
+    main > .cmp-container > .aem-Grid > .container:not(.container--nested):not(.container--full-width):not(.container--hero):not(.container--no-padding):not(.container--full-bleed):not(:has(.herobanner)):not(:has(.hero-banner)),
+    .root > .cmp-container > .aem-Grid > .container:not(.container--nested):not(.container--full-width):not(.container--hero):not(.container--no-padding):not(.container--full-bleed):not(:has(.herobanner)):not(:has(.hero-banner)) {
+        > .cmp-container {
+            padding-top: 56px !important;    // 56px on all devices
+            padding-bottom: 56px !important; // 56px on all devices
+
+            > .aem-Grid,
+            > :not(.aem-Grid) {
+                padding-left: 16px !important;
+                padding-right: 16px !important;
+            }
+        }
+    }
+}
+
+// 6. Nested Containers (Containers inside another section container)
+// Resets padding to 0 and width to 100% so it fits naturally inside the 1320px grid
+.container--nested > .cmp-container,
+.container--section .container--nested > .cmp-container {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+
+    > .aem-Grid {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        margin: 0 !important;
+    }
+}
+
+// 7. Full Width Style Option (When author explicitly wants edge-to-edge content)
+.container--full-width {
+    width: 100% !important;
+    max-width: 100% !important;
+
+    > .cmp-container {
+        padding-top: 56px !important;
+        padding-bottom: 56px !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        max-width: 100% !important;
+
+        > .aem-Grid {
+            max-width: 100% !important;
+            padding-left: 40px !important;
+            padding-right: 40px !important;
+        }
+    }
+}
+
+// 8. Background Color Styles (Spans full viewport width on section container)
+.container--bg-white,
+.container--bg-white > .cmp-container {
+    background-color: #ffffff !important;
+}
+
+.container--bg-light,
+.container--bg-light > .cmp-container {
+    background-color: #F8FAFC !important;
+}
+
+.container--bg-navy,
+.container--bg-navy > .cmp-container {
+    background-color: #0B1F3A !important;
+    color: #ffffff !important;
+
+    .cmp-title__text,
+    .cmp-text,
+    p {
+        color: #ffffff !important;
+    }
+}
+
+.container--bg-blue,
+.container--bg-blue > .cmp-container {
+    background-color: #012965 !important;
+    color: #ffffff !important;
+
+    .cmp-title__text,
+    .cmp-text,
+    p {
+        color: #ffffff !important;
+    }
+}
+
+// 9. Child components inside container take full column/container width
+// Excludes multi-column cards (capability cards, stat cards) and grid columns with custom column spans
+.cmp-container {
+    > .title,
+    > .text,
+    > .image,
+    .aem-Grid > .title,
+    .aem-Grid > .text,
+    .aem-Grid > .image,
+    > .teaser:not(.brainvire-teaser--capability):not(.brainvire-teaser--stat-card):not(:has(.brainvire-teaser--capability)):not(:has(.brainvire-teaser--stat-card)),
+    .aem-Grid > .teaser:not(.brainvire-teaser--capability):not(.brainvire-teaser--stat-card):not(:has(.brainvire-teaser--capability)):not(:has(.brainvire-teaser--stat-card)):not([class*="aem-GridColumn--default--1"]):not([class*="aem-GridColumn--default--2"]):not([class*="aem-GridColumn--default--3"]):not([class*="aem-GridColumn--default--4"]):not([class*="aem-GridColumn--default--5"]):not([class*="aem-GridColumn--default--6"]):not([class*="aem-GridColumn--default--7"]):not([class*="aem-GridColumn--default--8"]):not([class*="aem-GridColumn--default--9"]):not([class*="aem-GridColumn--default--10"]):not([class*="aem-GridColumn--default--11"]) {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        box-sizing: border-box !important;
+    }
+}

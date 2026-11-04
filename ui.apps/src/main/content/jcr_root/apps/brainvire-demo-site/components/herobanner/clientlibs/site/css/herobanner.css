@@ -1,4 +1,52 @@
+/* Zero-padding and full-bleed layout for hero banner and its parent wrappers */
+.container:has(.herobanner),
+.container:has(.hero-banner),
+.container--hero,
+.container--no-padding,
+.container--full-bleed {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.container:has(.herobanner) > .cmp-container,
+.container:has(.hero-banner) > .cmp-container,
+.container--hero > .cmp-container,
+.container--no-padding > .cmp-container,
+.container--full-bleed > .cmp-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.container:has(.herobanner) > .cmp-container > .aem-Grid,
+.container:has(.hero-banner) > .cmp-container > .aem-Grid,
+.container--hero > .cmp-container > .aem-Grid,
+.container--no-padding > .cmp-container > .aem-Grid,
+.container--full-bleed > .cmp-container > .aem-Grid {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.herobanner,
+.herobanner.aem-GridColumn,
+.aem-Grid > .herobanner {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    float: none !important;
+}
+
 .hero-banner {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
     position: relative;
     isolation: isolate;
     display: flex;

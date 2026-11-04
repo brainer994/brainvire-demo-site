@@ -11,16 +11,18 @@
 // Strictly excludes .brainvire-teaser--stat-card and .brainvire-teaser--capability
 // ==============================================================================
 
-.teaser.brainvire-teaser:not(.brainvire-teaser--stat-card):not(.brainvire-teaser--capability),
-.aem-Grid > .teaser.brainvire-teaser:not(.brainvire-teaser--stat-card):not(.brainvire-teaser--capability) {
+.teaser.brainvire-teaser:not(.brainvire-teaser--stat-card):not(.brainvire-teaser--capability):not(:has(.brainvire-teaser--stat-card)):not(:has(.brainvire-teaser--capability)),
+.aem-Grid > .teaser.brainvire-teaser:not(.brainvire-teaser--stat-card):not(.brainvire-teaser--capability):not(:has(.brainvire-teaser--stat-card)):not(:has(.brainvire-teaser--capability)) {
     position: -webkit-sticky !important;
     position: sticky !important;
     float: none !important; // CRITICAL: AEM Grid float breaks CSS sticky
     clear: both !important;
-    margin-left: 8.333333% !important; // Matches 1-col offset
-    width: 83.333333% !important;       // Matches 10-col width
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
     box-sizing: border-box !important;
-    margin-bottom: 96px !important;    // Ample scroll distance between stacked cards
+    margin-bottom: 48px !important;    // Ample scroll distance between stacked cards
     transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
     will-change: transform, top;
 
@@ -36,7 +38,7 @@
     &:nth-of-type(6) { top: 166px !important; z-index: 10 !important; }
 
     &:last-of-type {
-        margin-bottom: 64px !important;
+        margin-bottom: 0 !important;
     }
 
     @media (max-width: 768px) {
@@ -49,7 +51,7 @@
 }
 
 // Inner Card Article for Selected Work ONLY
-.teaser.brainvire-teaser:not(.brainvire-teaser--stat-card):not(.brainvire-teaser--capability) > article.cmp-teaser {
+.teaser.brainvire-teaser:not(.brainvire-teaser--stat-card):not(.brainvire-teaser--capability):not(:has(.brainvire-teaser--stat-card)):not(:has(.brainvire-teaser--capability)) > article.cmp-teaser {
     position: relative !important;
     top: auto !important;
     display: flex !important;
@@ -243,14 +245,9 @@
 // Aliases: brainvire-teaser--capability-card, brainvire-capability-card
 // ==============================================================================
 
-// Grid container: 1-col offset on left (8.333333%), 1-col offset on right (width: 83.333333%),
-// matching the 10-column layout of the entire site, with 24px gap between cards.
+// Capability Cards Grid Layout inside Container
 .aem-Grid:has(> .brainvire-teaser--capability),
-.aem-Grid:has(> .teaser.brainvire-teaser--capability),
-#container-b5213f5bab .aem-Grid {
-    margin-left: 8.333333% !important;
-    width: 83.333333% !important;
-    max-width: 83.333333% !important;
+.aem-Grid:has(> .teaser.brainvire-teaser--capability) {
     box-sizing: border-box !important;
     float: none !important;
     clear: both !important;
@@ -267,10 +264,6 @@
     }
 
     @media (max-width: 992px) {
-        margin-left: 0 !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        padding: 0 20px !important;
         gap: 20px !important;
     }
 }
@@ -482,5 +475,567 @@
                 }
             }
         }
+    }
+}
+
+@keyframes fhGradientPan {
+    0% { background-position: 50.0% 50.0%; }
+    6.25% { background-position: 76.9% 61.5%; }
+    12.5% { background-position: 88.0% 71.2%; }
+    18.75% { background-position: 76.9% 77.7%; }
+    25% { background-position: 50.0% 80.0%; }
+    31.25% { background-position: 23.1% 77.7%; }
+    37.5% { background-position: 12.0% 71.2%; }
+    43.75% { background-position: 23.1% 61.5%; }
+    50% { background-position: 50.0% 50.0%; }
+    56.25% { background-position: 76.9% 38.5%; }
+    62.5% { background-position: 88.0% 28.8%; }
+    68.75% { background-position: 76.9% 22.3%; }
+    75% { background-position: 50.0% 20.0%; }
+    81.25% { background-position: 23.1% 22.3%; }
+    87.5% { background-position: 12.0% 28.8%; }
+    93.75% { background-position: 23.1% 38.5%; }
+    100% { background-position: 50.0% 50.0%; }
+}
+
+// ==============================================================================
+// 3. STAT CARDS (Built with AI Section - 2-Column Side-by-Side Grid)
+// Policy Style Name: brainvire-teaser--stat-card
+// ==============================================================================
+
+// Stat Cards 2-Column Side-by-Side Grid Layout inside Container
+.aem-Grid:has(> .brainvire-teaser--stat-card),
+.aem-Grid:has(> .teaser.brainvire-teaser--stat-card) {
+    box-sizing: border-box !important;
+    float: none !important;
+    clear: both !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: stretch !important;
+    gap: 24px !important;
+
+    // Suppress AEM grid clearfix pseudo-elements
+    &::before,
+    &::after {
+        display: none !important;
+        content: none !important;
+    }
+
+    // Title / Text in this grid take 100% full width row
+    > .title,
+    > .text {
+        flex: 1 1 100% !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    // Stat card teasers — override AEM aem-GridColumn--default--12 (width:100%)
+    // Target every .teaser child (they all have brainvire-teaser--stat-card in this grid)
+    > .teaser,
+    > .teaser.brainvire-teaser--stat-card,
+    > .teaser.aem-GridColumn,
+    > .brainvire-teaser--stat-card,
+    > .teaser.aem-GridColumn--default--12,
+    > .aem-GridColumn.brainvire-teaser--stat-card {
+        flex: 1 1 calc((100% - 24px) / 2) !important;
+        max-width: calc((100% - 24px) / 2) !important;
+        width: calc((100% - 24px) / 2) !important;
+        min-width: 0 !important;
+        box-sizing: border-box !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        float: none !important;
+        clear: none !important;
+        display: flex !important;
+
+        @media (max-width: 768px) {
+            flex: 1 1 100% !important;
+            max-width: 100% !important;
+            width: 100% !important;
+            margin-bottom: 20px !important;
+        }
+    }
+}
+
+.teaser.brainvire-teaser--stat-card,
+.brainvire-teaser--stat-card,
+.teaser:has(.brainvire-teaser--stat-card) {
+    box-sizing: border-box !important;
+    float: none !important;
+    clear: none !important;
+    display: flex !important;
+
+    article.cmp-teaser,
+    .cmp-teaser {
+        width: 100% !important;
+        height: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        border: 1px solid #E5E7EB !important;
+        border-top: 3px solid #1666E0 !important;
+        border-radius: 8px !important;
+        background: #ffffff !important;
+        padding: 32px 32px 24px !important;
+        box-sizing: border-box !important;
+        min-height: unset !important;
+        max-width: none !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03) !important;
+        transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease !important;
+        position: relative !important;
+        top: auto !important;
+
+        &:hover {
+            transform: translateY(-3px) !important;
+            box-shadow: 0 12px 28px -6px rgba(11, 31, 58, 0.08) !important;
+            border-color: #CBD5E1 !important;
+            border-top-color: #1666E0 !important;
+        }
+
+        .cmp-teaser__image {
+            display: none !important;
+        }
+
+        .brainvire-teaser__content {
+            flex: 1 1 auto !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: flex-start !important;
+            padding: 0 !important;
+            gap: 0 !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+        }
+
+        // Top row: Pretitle left + Stat right
+        .brainvire-teaser__top-row {
+            display: flex !important;
+            flex-direction: row !important;
+            justify-content: space-between !important;
+            align-items: flex-start !important;
+            gap: 16px !important;
+            margin-bottom: 20px !important;
+            width: 100% !important;
+        }
+
+        // Pretitle: Blue dash + uppercase text
+        .brainvire-teaser__pretitle {
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+            font-family: 'BV Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+            font-size: 11px !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.1em !important;
+            text-transform: uppercase !important;
+            color: #1666E0 !important;
+            margin: 0 !important;
+            padding-top: 6px !important;
+            flex-shrink: 0 !important;
+            max-width: 55% !important;
+
+            &::before {
+                content: '' !important;
+                display: inline-block !important;
+                width: 16px !important;
+                height: 2px !important;
+                background: #1666E0 !important;
+                flex-shrink: 0 !important;
+            }
+
+            .cmp-teaser__pretitle {
+                margin: 0 !important;
+                font-size: inherit !important;
+                font-weight: inherit !important;
+                color: inherit !important;
+                letter-spacing: inherit !important;
+                text-transform: inherit !important;
+            }
+        }
+
+        // Stat group: [81%], [63%], [AEM], [4] on right
+        .brainvire-teaser__stat {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: flex-end !important;
+            text-align: right !important;
+            flex-shrink: 0 !important;
+
+            .cmp-teaser__title {
+                font-family: 'BV Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+                font-size: 2.5rem !important;
+                font-weight: 800 !important;
+                line-height: 1 !important;
+                color: #111827 !important;
+                margin: 0 !important;
+                text-align: right !important;
+                white-space: nowrap !important;
+                letter-spacing: -0.02em !important;
+            }
+
+            .cmp-teaser__description {
+                font-family: 'BV Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+                font-size: 12px !important;
+                color: #6B7280 !important;
+                text-align: right !important;
+                margin: 4px 0 0 0 !important;
+                line-height: 1.4 !important;
+                font-weight: 400 !important;
+                max-width: 200px !important;
+
+                p {
+                    margin: 0 !important;
+                    font-size: inherit !important;
+                    color: inherit !important;
+                }
+            }
+        }
+
+        // Secondary Title: Salesforce Commerce Cloud → Shopify Plus
+        .brainvire-teaser__secondary-title {
+            font-family: 'BV Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+            font-size: 1.25rem !important;
+            font-weight: 700 !important;
+            color: #111827 !important;
+            margin: 0 0 10px 0 !important;
+            line-height: 1.35 !important;
+            letter-spacing: -0.01em !important;
+        }
+
+        // Supporting Description
+        .brainvire-teaser__supporting-description {
+            font-family: 'BV Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+            font-size: 14px !important;
+            color: #4B5563 !important;
+            line-height: 1.6 !important;
+            margin: 0 0 24px 0 !important;
+        }
+
+        // Footer: Metadata left + CTA right
+        .brainvire-teaser__footer {
+            display: flex !important;
+            flex-direction: row !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            margin-top: auto !important;
+            padding-top: 16px !important;
+            border-top: 1px solid #F1F5F9 !important;
+            gap: 12px !important;
+            width: 100% !important;
+        }
+
+        .brainvire-teaser__metadata {
+            font-family: 'BV Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+            font-size: 11px !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.08em !important;
+            text-transform: uppercase !important;
+            color: #6B7280 !important;
+            margin: 0 !important;
+        }
+
+        .cmp-teaser__action-container {
+            margin: 0 !important;
+        }
+
+        .cmp-teaser__action-link {
+            font-family: 'BV Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+            font-size: 13.5px !important;
+            font-weight: 600 !important;
+            color: #111827 !important;
+            text-decoration: none !important;
+            white-space: nowrap !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 6px !important;
+            transition: color 0.2s ease, gap 0.2s ease !important;
+
+            &:hover {
+                color: #1666E0 !important;
+                gap: 9px !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            padding: 24px 20px !important;
+
+            .brainvire-teaser__top-row {
+                flex-direction: column !important;
+                gap: 12px !important;
+            }
+
+            .brainvire-teaser__stat {
+                align-items: flex-start !important;
+                text-align: left !important;
+
+                .cmp-teaser__title,
+                .cmp-teaser__description {
+                    text-align: left !important;
+                }
+            }
+
+            .brainvire-teaser__footer {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 10px !important;
+            }
+        }
+    }
+}
+
+
+// ==============================================================================
+// 3. CTA BANNER VARIANT (Services CTA Section - https://www.brainvire.com/services/)
+// Policy Style Name: CTA Banner
+// CSS Classes: brainvire-teaser--cta (Alias: cta, brainvire-cta)
+// ==============================================================================
+
+.aem-Grid > .teaser.brainvire-teaser--cta,
+.aem-Grid > .teaser.cta,
+.aem-Grid > .brainvire-teaser--cta,
+.aem-Grid > .cta.teaser,
+.teaser.brainvire-teaser--cta,
+.teaser.cta,
+.brainvire-teaser--cta,
+.cta.teaser {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    clear: both !important;
+    float: none !important;
+    box-sizing: border-box !important;
+
+    article.cmp-teaser,
+    .cmp-teaser {
+        position: relative !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        justify-content: center !important;
+        background: linear-gradient(120deg, #141414 0%, #333333 20%, #0141a2 50%, #0162f4 70%, #333333 90%, #141414 100%) !important;
+        background-size: 260% 260% !important;
+        background-position: 50% 50% !important;
+        animation: fhGradientPan 36.2s linear infinite !important;
+        will-change: background-position;
+        border: 1px solid rgba(255, 255, 255, 0.12) !important;
+        border-radius: 20px !important;
+        box-shadow: 0 20px 48px -12px rgba(1, 65, 162, 0.3), 0 8px 24px rgba(0, 0, 0, 0.22) !important;
+        overflow: hidden !important;
+        box-sizing: border-box !important;
+        padding: 68px 60px !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important;
+
+        &::after {
+            content: "" !important;
+            position: absolute !important;
+            inset: 0 !important;
+            background: radial-gradient(800px 420px at 90% 100%, rgba(59, 139, 255, 0.14), transparent 60%) !important;
+            pointer-events: none !important;
+            z-index: 1 !important;
+        }
+
+        &:hover {
+            box-shadow: 0 24px 56px -10px rgba(1, 98, 244, 0.38), 0 10px 28px rgba(0, 0, 0, 0.28) !important;
+            border-color: rgba(255, 255, 255, 0.22) !important;
+        }
+
+        .cmp-teaser__image {
+            display: none !important;
+        }
+
+        .brainvire-teaser__content {
+            position: relative !important;
+            z-index: 2 !important;
+            flex: 1 1 auto !important;
+            width: 100% !important;
+            max-width: 900px !important;
+            padding: 0 !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            text-align: left !important;
+            gap: 0 !important;
+        }
+
+        .brainvire-teaser__top-row {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            width: 100% !important;
+            margin-bottom: 0 !important;
+        }
+
+        .brainvire-teaser__pretitle {
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+            margin: 0 0 16px 0 !important;
+
+            .cmp-teaser__pretitle {
+                font-family: 'BV Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+                font-size: 13px !important;
+                font-weight: 700 !important;
+                color: #A0C3F0 !important;
+                letter-spacing: 0.14em !important;
+                text-transform: uppercase !important;
+                margin: 0 !important;
+                display: inline-flex !important;
+                align-items: center !important;
+
+                &::before {
+                    content: '/' !important;
+                    color: #5FA5F9 !important;
+                    font-weight: 800 !important;
+                    font-size: 1.25em !important;
+                    margin-right: 6px !important;
+                }
+            }
+        }
+
+        .brainvire-teaser__stat {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            text-align: left !important;
+            width: 100% !important;
+            margin-bottom: 0 !important;
+
+            .cmp-teaser__title {
+                font-family: 'BV Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+                font-size: clamp(28px, 3.8vw, 52px) !important;
+                font-weight: 700 !important;
+                line-height: 1.15 !important;
+                letter-spacing: -0.025em !important;
+                color: #ffffff !important;
+                margin: 0 0 18px 0 !important;
+                max-width: 900px !important;
+
+                .cmp-teaser__title-link {
+                    color: #ffffff !important;
+                    text-decoration: none !important;
+
+                    &:hover {
+                        color: #ffffff !important;
+                        text-decoration: underline !important;
+                    }
+                }
+            }
+
+            .cmp-teaser__description {
+                font-family: 'BV Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+                font-size: clamp(15px, 1.2vw, 17px) !important;
+                font-weight: 400 !important;
+                line-height: 1.65 !important;
+                color: #E9F1FC !important;
+                margin: 0 0 32px 0 !important;
+                max-width: 620px !important;
+
+                p {
+                    margin: 0 !important;
+                    font-size: inherit !important;
+                    font-weight: inherit !important;
+                    line-height: inherit !important;
+                    color: inherit !important;
+                }
+            }
+        }
+
+        .brainvire-teaser__footer {
+            display: flex !important;
+            flex-direction: row !important;
+            align-items: center !important;
+            justify-content: flex-start !important;
+            margin-top: 4px !important;
+            padding-top: 0 !important;
+            border-top: none !important;
+            width: 100% !important;
+        }
+
+        .cmp-teaser__action-container {
+            margin: 0 !important;
+            display: inline-flex !important;
+        }
+
+        .cmp-teaser__action-link {
+            font-family: 'BV Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 10px !important;
+            background: #ffffff !important;
+            color: #141414 !important;
+            font-size: 15px !important;
+            font-weight: 700 !important;
+            line-height: 1 !important;
+            padding: 16px 32px !important;
+            border-radius: 6px !important;
+            text-decoration: none !important;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16) !important;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+            white-space: nowrap !important;
+
+            &::after {
+                content: '→' !important;
+                font-size: 1.15em !important;
+                font-weight: 700 !important;
+                color: inherit !important;
+                transition: transform 0.25s ease !important;
+                margin-left: 2px !important;
+            }
+
+            &:hover {
+                background: #012965 !important;
+                color: #ffffff !important;
+                box-shadow: 0 8px 24px rgba(1, 41, 101, 0.45) !important;
+                transform: translateY(-2px) !important;
+                text-decoration: none !important;
+
+                &::after {
+                    transform: translateX(4px) !important;
+                }
+            }
+        }
+
+        @media (max-width: 768px) {
+            padding: 44px 24px !important;
+            border-radius: 14px !important;
+
+            .brainvire-teaser__stat {
+                .cmp-teaser__title {
+                    font-size: clamp(24px, 6vw, 32px) !important;
+                }
+
+                .cmp-teaser__description {
+                    font-size: 15px !important;
+                    margin-bottom: 24px !important;
+                }
+            }
+
+            .cmp-teaser__action-container {
+                width: 100% !important;
+            }
+
+            .cmp-teaser__action-link {
+                width: 100% !important;
+                box-sizing: border-box !important;
+                text-align: center !important;
+                justify-content: center !important;
+                padding: 14px 20px !important;
+            }
+        }
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .teaser.brainvire-teaser--cta article.cmp-teaser,
+    .teaser.cta article.cmp-teaser,
+    .brainvire-teaser--cta article.cmp-teaser,
+    .cta article.cmp-teaser {
+        animation: none !important;
     }
 }

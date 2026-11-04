@@ -243,6 +243,60 @@
                     sling:resourceType="wcm/core/components/policy/policy"
                     components="[group:Brainvire Demo Site - Content,/apps/brainvire-demo-site/components/form/container]">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
+                    <cq:styleGroups jcr:primaryType="nt:unstructured">
+                        <item0
+                            cq:styleGroupLabel="Section Layout"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="container--section"
+                                    cq:styleId="1574694950001"
+                                    cq:styleLabel="Section (Parallel to Header - 56px Padding)"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                    cq:styleClasses="container--full-width"
+                                    cq:styleId="1574694950002"
+                                    cq:styleLabel="Full Width (Edge-to-Edge)"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item2
+                                    cq:styleClasses="container--nested"
+                                    cq:styleId="1574694950003"
+                                    cq:styleLabel="Nested Container (No Extra Padding)"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item3
+                                    cq:styleClasses="container--hero"
+                                    cq:styleId="1574694950004"
+                                    cq:styleLabel="Hero / Full Bleed (No Padding)"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item0>
+                        <item1
+                            cq:styleGroupLabel="Background Color"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="container--bg-white"
+                                    cq:styleId="1574694950010"
+                                    cq:styleLabel="White Background"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                    cq:styleClasses="container--bg-light"
+                                    cq:styleId="1574694950011"
+                                    cq:styleLabel="Light Gray Background"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item2
+                                    cq:styleClasses="container--bg-navy"
+                                    cq:styleId="1574694950012"
+                                    cq:styleLabel="Navy Background"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item3
+                                    cq:styleClasses="container--bg-blue"
+                                    cq:styleId="1574694950013"
+                                    cq:styleLabel="Blue Background"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item1>
+                    </cq:styleGroups>
                     <cq:authoring jcr:primaryType="nt:unstructured">
                         <assetToComponentMapping jcr:primaryType="nt:unstructured">
                             <mapping_1575030255082
@@ -313,6 +367,34 @@
                     sling:resourceType="wcm/core/components/policy/policy"
                     titleType="h3">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
+                    <cq:styleGroups jcr:primaryType="nt:unstructured">
+                        <item0
+                            cq:styleGroupLabel="Teaser Style"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="brainvire-teaser--stat-card"
+                                    cq:styleId="1575031387651"
+                                    cq:styleLabel="Stat Card (Side-by-Side 2-Column)"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                    cq:styleClasses="brainvire-teaser--capability"
+                                    cq:styleId="1575031387652"
+                                    cq:styleLabel="Capability Card (3-Column)"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item2
+                                    cq:styleClasses="brainvire-teaser"
+                                    cq:styleId="1575031387653"
+                                    cq:styleLabel="Selected Work (Sticky Stacking Card)"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item3
+                                    cq:styleClasses="brainvire-teaser--cta"
+                                    cq:styleId="1575031387654"
+                                    cq:styleLabel="CTA Banner"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item0>
+                    </cq:styleGroups>
                 </policy_1575031387650>
             </teaser>
             <download jcr:primaryType="nt:unstructured">
