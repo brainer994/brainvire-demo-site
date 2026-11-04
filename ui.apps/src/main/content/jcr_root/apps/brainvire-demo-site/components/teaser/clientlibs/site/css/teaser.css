@@ -3,11 +3,10 @@
     flex-direction: row;
     align-items: stretch;
     border: 1px solid #e5e7eb;
-    border-radius: 8px;
+    border-radius: 25px;
     overflow: hidden;
     background: #fff;
     min-height: 400px;
-    margin-top: 20px;
 }
 
 .brainvire-teaser .cmp-teaser__image {
@@ -146,24 +145,24 @@
 }
 
 /* Title/text components take full width inside stat-card grid */
-.aem-Grid:has(> .brainvire-teaser--stat-card) > .title,
-.aem-Grid:has(> .brainvire-teaser--stat-card) > .text,
-.aem-Grid:has(> .teaser.brainvire-teaser--stat-card) > .title,
-.aem-Grid:has(> .teaser.brainvire-teaser--stat-card) > .text,
-.aem-Grid:has(.brainvire-teaser--stat-card) > .title,
-.aem-Grid:has(.brainvire-teaser--stat-card) > .text {
+.aem-Grid:has(> .brainvire-teaser--stat-card)>.title,
+.aem-Grid:has(> .brainvire-teaser--stat-card)>.text,
+.aem-Grid:has(> .teaser.brainvire-teaser--stat-card)>.title,
+.aem-Grid:has(> .teaser.brainvire-teaser--stat-card)>.text,
+.aem-Grid:has(.brainvire-teaser--stat-card)>.title,
+.aem-Grid:has(.brainvire-teaser--stat-card)>.text {
     flex: 1 1 100% !important;
     width: 100% !important;
     max-width: 100% !important;
 }
 
 /* Each teaser takes 50% width (2 per row) */
-.aem-Grid:has(> .brainvire-teaser--stat-card) > .teaser,
-.aem-Grid:has(> .teaser.brainvire-teaser--stat-card) > .teaser,
-.aem-Grid:has(> .teaser:has(.brainvire-teaser--stat-card)) > .teaser,
-.aem-Grid:has(.brainvire-teaser--stat-card) > .teaser,
-.aem-Grid:has(.brainvire-teaser--stat-card) > .brainvire-teaser--stat-card,
-.aem-Grid:has(.brainvire-teaser--stat-card) > .teaser.brainvire-teaser--stat-card {
+.aem-Grid:has(> .brainvire-teaser--stat-card)>.teaser,
+.aem-Grid:has(> .teaser.brainvire-teaser--stat-card)>.teaser,
+.aem-Grid:has(> .teaser:has(.brainvire-teaser--stat-card))>.teaser,
+.aem-Grid:has(.brainvire-teaser--stat-card)>.teaser,
+.aem-Grid:has(.brainvire-teaser--stat-card)>.brainvire-teaser--stat-card,
+.aem-Grid:has(.brainvire-teaser--stat-card)>.teaser.brainvire-teaser--stat-card {
     flex: 1 1 calc((100% - 24px) / 2) !important;
     max-width: calc((100% - 24px) / 2) !important;
     width: calc((100% - 24px) / 2) !important;
@@ -177,11 +176,12 @@
 }
 
 @media (max-width: 768px) {
-    .aem-Grid:has(> .brainvire-teaser--stat-card) > .teaser,
-    .aem-Grid:has(> .teaser.brainvire-teaser--stat-card) > .teaser,
-    .aem-Grid:has(> .teaser:has(.brainvire-teaser--stat-card)) > .teaser,
-    .aem-Grid:has(.brainvire-teaser--stat-card) > .teaser,
-    .aem-Grid:has(.brainvire-teaser--stat-card) > .brainvire-teaser--stat-card {
+
+    .aem-Grid:has(> .brainvire-teaser--stat-card)>.teaser,
+    .aem-Grid:has(> .teaser.brainvire-teaser--stat-card)>.teaser,
+    .aem-Grid:has(> .teaser:has(.brainvire-teaser--stat-card))>.teaser,
+    .aem-Grid:has(.brainvire-teaser--stat-card)>.teaser,
+    .aem-Grid:has(.brainvire-teaser--stat-card)>.brainvire-teaser--stat-card {
         flex: 1 1 100% !important;
         max-width: 100% !important;
         width: 100% !important;
@@ -410,6 +410,7 @@
 }
 
 @media (max-width: 768px) {
+
     .brainvire-teaser--stat-card .brainvire-teaser__top-row,
     .teaser:has(.brainvire-teaser--stat-card) .brainvire-teaser__top-row {
         flex-direction: column !important;
@@ -439,29 +440,79 @@
 
 /* ── CTA Banner Variant (https://www.brainvire.com/services/) ── */
 @keyframes fhGradientPan {
-    0% { background-position: 50.0% 50.0%; }
-    6.25% { background-position: 76.9% 61.5%; }
-    12.5% { background-position: 88.0% 71.2%; }
-    18.75% { background-position: 76.9% 77.7%; }
-    25% { background-position: 50.0% 80.0%; }
-    31.25% { background-position: 23.1% 77.7%; }
-    37.5% { background-position: 12.0% 71.2%; }
-    43.75% { background-position: 23.1% 61.5%; }
-    50% { background-position: 50.0% 50.0%; }
-    56.25% { background-position: 76.9% 38.5%; }
-    62.5% { background-position: 88.0% 28.8%; }
-    68.75% { background-position: 76.9% 22.3%; }
-    75% { background-position: 50.0% 20.0%; }
-    81.25% { background-position: 23.1% 22.3%; }
-    87.5% { background-position: 12.0% 28.8%; }
-    93.75% { background-position: 23.1% 38.5%; }
-    100% { background-position: 50.0% 50.0%; }
+    0% {
+        background-position: 50.0% 50.0%;
+    }
+
+    6.25% {
+        background-position: 76.9% 61.5%;
+    }
+
+    12.5% {
+        background-position: 88.0% 71.2%;
+    }
+
+    18.75% {
+        background-position: 76.9% 77.7%;
+    }
+
+    25% {
+        background-position: 50.0% 80.0%;
+    }
+
+    31.25% {
+        background-position: 23.1% 77.7%;
+    }
+
+    37.5% {
+        background-position: 12.0% 71.2%;
+    }
+
+    43.75% {
+        background-position: 23.1% 61.5%;
+    }
+
+    50% {
+        background-position: 50.0% 50.0%;
+    }
+
+    56.25% {
+        background-position: 76.9% 38.5%;
+    }
+
+    62.5% {
+        background-position: 88.0% 28.8%;
+    }
+
+    68.75% {
+        background-position: 76.9% 22.3%;
+    }
+
+    75% {
+        background-position: 50.0% 20.0%;
+    }
+
+    81.25% {
+        background-position: 23.1% 22.3%;
+    }
+
+    87.5% {
+        background-position: 12.0% 28.8%;
+    }
+
+    93.75% {
+        background-position: 23.1% 38.5%;
+    }
+
+    100% {
+        background-position: 50.0% 50.0%;
+    }
 }
 
-.aem-Grid > .teaser.brainvire-teaser--cta,
-.aem-Grid > .teaser.cta,
-.aem-Grid > .brainvire-teaser--cta,
-.aem-Grid > .cta.teaser,
+.aem-Grid>.teaser.brainvire-teaser--cta,
+.aem-Grid>.teaser.cta,
+.aem-Grid>.brainvire-teaser--cta,
+.aem-Grid>.cta.teaser,
 .teaser.brainvire-teaser--cta,
 .teaser.cta,
 .brainvire-teaser--cta,

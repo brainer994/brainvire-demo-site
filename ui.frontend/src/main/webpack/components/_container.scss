@@ -241,6 +241,13 @@ main > .cmp-container > .aem-Grid > .container:not(.container--nested):not(.cont
     background-color: #F8FAFC !important;
 }
 
+.container--bg-grey,
+.container--bg-grey > .cmp-container,
+.container--bg-gray,
+.container--bg-gray > .cmp-container {
+    background-color: #F3F4F6 !important;
+}
+
 .container--bg-navy,
 .container--bg-navy > .cmp-container {
     background-color: #0B1F3A !important;
