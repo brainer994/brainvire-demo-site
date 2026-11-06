@@ -1,0 +1,394 @@
+/* ==============================================================================
+   Brainvire Button Component Styles
+   Designed to match the live site (https://www.brainvire.com)
+   Supports AEM Style System (Variant, Size, Shape, and Text Color)
+   ============================================================================== */
+
+/* ── 1. Base Button Styles (.cmp-button) ── */
+.cmp-button {
+    font-family: 'BV Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    position: relative;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1;
+    text-align: center;
+    text-decoration: none !important;
+    white-space: nowrap;
+    padding: 13px 26px;
+    min-height: 46px;
+    border: 1.5px solid transparent;
+    border-radius: 6px;
+    background-color: #0162F4;
+    color: #FFFFFF !important;
+    cursor: pointer;
+    user-select: none;
+    box-sizing: border-box;
+    overflow: hidden;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.cmp-button .cmp-button__text {
+    color: inherit !important;
+    font-family: inherit !important;
+    font-weight: inherit !important;
+    font-size: inherit !important;
+    line-height: inherit !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: transform 0.25s ease;
+}
+
+.cmp-button .cmp-button__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1em;
+    line-height: 1;
+    transition: transform 0.25s ease;
+}
+
+.cmp-button:hover,
+.cmp-button:focus-visible {
+    background-color: #0141A2;
+    border-color: #0141A2;
+    color: #FFFFFF !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(1, 98, 244, 0.32);
+    text-decoration: none !important;
+}
+
+.cmp-button:hover .cmp-button__icon,
+.cmp-button:focus-visible .cmp-button__icon {
+    transform: translateX(4px);
+}
+
+.cmp-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+.cmp-button:focus-visible {
+    outline: 2px solid #0052FF;
+    outline-offset: 2px;
+}
+
+.cmp-button[disabled],
+.cmp-button.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* ── 2. Button Themes / Variants (AEM Style System Group 1) ── */
+
+/* Primary Blue Button (Brainvire signature style) */
+.btn--primary .cmp-button,
+.btn--primary.cmp-button,
+.button.btn--primary .cmp-button {
+    background-color: #0162F4 !important;
+    border-color: #0162F4 !important;
+    color: #FFFFFF !important;
+}
+
+.btn--primary .cmp-button:hover,
+.btn--primary .cmp-button:focus-visible,
+.btn--primary.cmp-button:hover,
+.btn--primary.cmp-button:focus-visible,
+.button.btn--primary .cmp-button:hover,
+.button.btn--primary .cmp-button:focus-visible {
+    background-color: #0141A2 !important;
+    border-color: #0141A2 !important;
+    color: #FFFFFF !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(1, 98, 244, 0.35);
+}
+
+/* Secondary / Outline Button */
+.btn--outline .cmp-button,
+.btn--outline.cmp-button,
+.button.btn--outline .cmp-button,
+.btn--secondary .cmp-button,
+.btn--secondary.cmp-button,
+.button.btn--secondary .cmp-button {
+    background-color: transparent !important;
+    border-color: #0162F4 !important;
+    color: #0162F4 !important;
+    box-shadow: none;
+}
+
+.btn--outline .cmp-button .cmp-button__text,
+.btn--outline .cmp-button .cmp-button__icon,
+.btn--outline.cmp-button .cmp-button__text,
+.btn--outline.cmp-button .cmp-button__icon,
+.button.btn--outline .cmp-button .cmp-button__text,
+.button.btn--outline .cmp-button .cmp-button__icon {
+    color: #0162F4 !important;
+}
+
+.btn--outline .cmp-button:hover,
+.btn--outline .cmp-button:focus-visible,
+.btn--outline.cmp-button:hover,
+.btn--outline.cmp-button:focus-visible,
+.button.btn--outline .cmp-button:hover,
+.button.btn--outline .cmp-button:focus-visible {
+    background-color: #0162F4 !important;
+    border-color: #0162F4 !important;
+    color: #FFFFFF !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(1, 98, 244, 0.28);
+}
+
+.btn--outline .cmp-button:hover .cmp-button__text,
+.btn--outline .cmp-button:hover .cmp-button__icon,
+.btn--outline.cmp-button:hover .cmp-button__text,
+.btn--outline.cmp-button:hover .cmp-button__icon {
+    color: #FFFFFF !important;
+}
+
+/* Dark Navy Button */
+.btn--dark .cmp-button,
+.btn--dark.cmp-button,
+.button.btn--dark .cmp-button,
+.btn--navy .cmp-button,
+.btn--navy.cmp-button,
+.button.btn--navy .cmp-button {
+    background-color: #012965 !important;
+    border-color: #012965 !important;
+    color: #FFFFFF !important;
+}
+
+.btn--dark .cmp-button:hover,
+.btn--dark .cmp-button:focus-visible,
+.btn--dark.cmp-button:hover,
+.btn--dark.cmp-button:focus-visible,
+.button.btn--dark .cmp-button:hover,
+.button.btn--dark .cmp-button:focus-visible {
+    background-color: #0162F4 !important;
+    border-color: #0162F4 !important;
+    color: #FFFFFF !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(1, 41, 101, 0.42);
+}
+
+/* Inverted / White Button (For dark background containers) */
+.btn--inverted .cmp-button,
+.btn--inverted.cmp-button,
+.button.btn--inverted .cmp-button,
+.btn--white .cmp-button,
+.btn--white.cmp-button,
+.button.btn--white .cmp-button {
+    background-color: #FFFFFF !important;
+    border-color: #FFFFFF !important;
+    color: #012965 !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.14);
+}
+
+.btn--inverted .cmp-button .cmp-button__text,
+.btn--inverted .cmp-button .cmp-button__icon,
+.btn--inverted.cmp-button .cmp-button__text,
+.btn--inverted.cmp-button .cmp-button__icon {
+    color: #012965 !important;
+}
+
+.btn--inverted .cmp-button:hover,
+.btn--inverted .cmp-button:focus-visible,
+.btn--inverted.cmp-button:hover,
+.btn--inverted.cmp-button:focus-visible,
+.button.btn--inverted .cmp-button:hover,
+.button.btn--inverted .cmp-button:focus-visible {
+    background-color: #012965 !important;
+    border-color: #012965 !important;
+    color: #FFFFFF !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.24);
+}
+
+.btn--inverted .cmp-button:hover .cmp-button__text,
+.btn--inverted .cmp-button:hover .cmp-button__icon,
+.btn--inverted.cmp-button:hover .cmp-button__text,
+.btn--inverted.cmp-button:hover .cmp-button__icon {
+    color: #FFFFFF !important;
+}
+
+/* Ghost / Arrow Link Button */
+.btn--arrow .cmp-button,
+.btn--arrow.cmp-button,
+.button.btn--arrow .cmp-button,
+.btn--ghost .cmp-button,
+.btn--ghost.cmp-button,
+.button.btn--ghost .cmp-button {
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 4px 0 !important;
+    min-height: auto !important;
+    color: #0162F4 !important;
+    box-shadow: none !important;
+    gap: 6px;
+}
+
+.btn--arrow .cmp-button .cmp-button__text,
+.btn--arrow.cmp-button .cmp-button__text {
+    color: #0162F4 !important;
+    font-weight: 700 !important;
+}
+
+.btn--arrow .cmp-button::after,
+.btn--arrow.cmp-button::after {
+    content: '→';
+    display: inline-block;
+    font-size: 1.15em;
+    font-weight: 700;
+    color: inherit;
+    margin-left: 2px;
+    transition: transform 0.25s ease;
+}
+
+.btn--arrow .cmp-button:hover,
+.btn--arrow .cmp-button:focus-visible,
+.btn--arrow.cmp-button:hover,
+.btn--arrow.cmp-button:focus-visible {
+    background: transparent !important;
+    color: #0141A2 !important;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+.btn--arrow .cmp-button:hover .cmp-button__text,
+.btn--arrow.cmp-button:hover .cmp-button__text {
+    color: #0141A2 !important;
+}
+
+.btn--arrow .cmp-button:hover::after,
+.btn--arrow.cmp-button:hover::after {
+    transform: translateX(5px);
+}
+
+.btn--arrow .cmp-button:hover .cmp-button__icon,
+.btn--arrow.cmp-button:hover .cmp-button__icon {
+    transform: translateX(5px);
+}
+
+/* ── 3. Button Sizes (AEM Style System Group 2) ── */
+
+/* Small Button */
+.btn--sm .cmp-button,
+.btn--sm.cmp-button,
+.button.btn--sm .cmp-button,
+.btn--small .cmp-button,
+.btn--small.cmp-button,
+.button.btn--small .cmp-button {
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    padding: 8px 18px !important;
+    min-height: 36px !important;
+    gap: 6px !important;
+}
+
+/* Medium / Standard Button */
+.btn--md .cmp-button,
+.btn--md.cmp-button,
+.button.btn--md .cmp-button,
+.btn--medium .cmp-button,
+.btn--medium.cmp-button,
+.button.btn--medium .cmp-button {
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    padding: 12px 26px !important;
+    min-height: 46px !important;
+    gap: 8px !important;
+}
+
+/* Large Button */
+.btn--lg .cmp-button,
+.btn--lg.cmp-button,
+.button.btn--lg .cmp-button,
+.btn--large .cmp-button,
+.btn--large.cmp-button,
+.button.btn--large .cmp-button {
+    font-size: 17px !important;
+    font-weight: 700 !important;
+    padding: 16px 36px !important;
+    min-height: 54px !important;
+    gap: 10px !important;
+}
+
+/* ── 4. Button Shape & Width (AEM Style System Group 3) ── */
+
+/* Rounded Corners (6px) */
+.btn--rounded .cmp-button,
+.btn--rounded.cmp-button,
+.button.btn--rounded .cmp-button {
+    border-radius: 6px !important;
+}
+
+/* Pill Shape (50px) */
+.btn--pill .cmp-button,
+.btn--pill.cmp-button,
+.button.btn--pill .cmp-button {
+    border-radius: 50px !important;
+}
+
+/* Full Width Button */
+.btn--full-width,
+.button.btn--full-width {
+    width: 100% !important;
+}
+
+.btn--full-width .cmp-button,
+.btn--full-width.cmp-button,
+.button.btn--full-width .cmp-button {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+}
+
+/* ── 5. Font / Text Color Overrides (AEM Style System Group 4) ── */
+
+/* Force White Text */
+.btn--text-white .cmp-button,
+.btn--text-white.cmp-button,
+.btn--text-white .cmp-button__text,
+.btn--text-white.cmp-button .cmp-button__text,
+.button.btn--text-white .cmp-button,
+.button.btn--text-white .cmp-button__text {
+    color: #FFFFFF !important;
+}
+
+/* Force Dark Charcoal Text */
+.btn--text-dark .cmp-button,
+.btn--text-dark.cmp-button,
+.btn--text-dark .cmp-button__text,
+.btn--text-dark.cmp-button .cmp-button__text,
+.button.btn--text-dark .cmp-button,
+.button.btn--text-dark .cmp-button__text {
+    color: #141414 !important;
+}
+
+/* Force Brainvire Blue Text */
+.btn--text-blue .cmp-button,
+.btn--text-blue.cmp-button,
+.btn--text-blue .cmp-button__text,
+.btn--text-blue.cmp-button .cmp-button__text,
+.button.btn--text-blue .cmp-button,
+.button.btn--text-blue .cmp-button__text {
+    color: #0162F4 !important;
+}
+
+/* Force Corporate Navy Text */
+.btn--text-navy .cmp-button,
+.btn--text-navy.cmp-button,
+.btn--text-navy .cmp-button__text,
+.btn--text-navy.cmp-button .cmp-button__text,
+.button.btn--text-navy .cmp-button,
+.button.btn--text-navy .cmp-button__text {
+    color: #012965 !important;
+}
+

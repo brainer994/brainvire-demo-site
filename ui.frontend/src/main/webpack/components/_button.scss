@@ -1,4 +1,411 @@
-.cmp-button {}
-.cmp-button__text {}
-.cmp-button__icon {}
-//.cmp-button__icon--myIcon {}
+// ==============================================================================
+// Brainvire Button Component Styles
+// Designed to match the live site (https://www.brainvire.com)
+// Supports AEM Style System (Variant, Size, Shape, and Text Color)
+// ==============================================================================
+
+// Brand Color Palette Tokens
+$bv-btn-blue-primary:       #0162F4;
+$bv-btn-blue-hover:         #0141A2;
+$bv-btn-blue-focus:         #0052FF;
+$bv-btn-navy-primary:       #012965;
+$bv-btn-navy-hover:         #00193D;
+$bv-btn-navy-dark:          #0B1F3A;
+$bv-btn-text-white:         #FFFFFF;
+$bv-btn-text-dark:          #141414;
+$bv-btn-border-subtle:      #CBD5E1;
+$bv-btn-border-light:       #E5E7EB;
+$bv-btn-bg-light:           #F8FAFC;
+$bv-btn-bg-tint:            #F0F5FF;
+
+// ------------------------------------------------------------------------------
+// 1. BASE BUTTON STYLES (.cmp-button)
+// ------------------------------------------------------------------------------
+.cmp-button {
+    font-family: 'BV Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    position: relative;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1;
+    text-align: center;
+    text-decoration: none !important;
+    white-space: nowrap;
+    padding: 13px 26px;
+    min-height: 46px;
+    border: 1.5px solid transparent;
+    border-radius: 6px;
+    background-color: $bv-btn-blue-primary;
+    color: $bv-btn-text-white !important;
+    cursor: pointer;
+    user-select: none;
+    box-sizing: border-box;
+    overflow: hidden;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+
+    .cmp-button__text {
+        color: inherit !important;
+        font-family: inherit !important;
+        font-weight: inherit !important;
+        font-size: inherit !important;
+        line-height: inherit !important;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        transition: transform 0.25s ease;
+    }
+
+    .cmp-button__icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1em;
+        line-height: 1;
+        transition: transform 0.25s ease;
+    }
+
+    &:hover,
+    &:focus-visible {
+        background-color: $bv-btn-blue-hover;
+        border-color: $bv-btn-blue-hover;
+        color: $bv-btn-text-white !important;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(1, 98, 244, 0.32);
+        text-decoration: none !important;
+
+        .cmp-button__icon {
+            transform: translateX(4px);
+        }
+    }
+
+    &:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+    }
+
+    &:focus-visible {
+        outline: 2px solid $bv-btn-blue-focus;
+        outline-offset: 2px;
+    }
+
+    &[disabled],
+    &.disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none !important;
+        box-shadow: none !important;
+    }
+}
+
+// ------------------------------------------------------------------------------
+// 2. BUTTON THEMES / VARIANTS (AEM Style System Group 1)
+// ------------------------------------------------------------------------------
+
+// Primary Blue Button (Brainvire signature style)
+.btn--primary,
+.button.btn--primary {
+    .cmp-button,
+    &.cmp-button {
+        background-color: $bv-btn-blue-primary !important;
+        border-color: $bv-btn-blue-primary !important;
+        color: $bv-btn-text-white !important;
+
+        &:hover,
+        &:focus-visible {
+            background-color: $bv-btn-blue-hover !important;
+            border-color: $bv-btn-blue-hover !important;
+            color: $bv-btn-text-white !important;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 22px rgba(1, 98, 244, 0.35);
+        }
+    }
+}
+
+// Secondary / Outline Button (Sleek outline with color inversion on hover)
+.btn--outline,
+.button.btn--outline,
+.btn--secondary,
+.button.btn--secondary {
+    .cmp-button,
+    &.cmp-button {
+        background-color: transparent !important;
+        border-color: $bv-btn-blue-primary !important;
+        color: $bv-btn-blue-primary !important;
+        box-shadow: none;
+
+        .cmp-button__text,
+        .cmp-button__icon {
+            color: $bv-btn-blue-primary !important;
+        }
+
+        &:hover,
+        &:focus-visible {
+            background-color: $bv-btn-blue-primary !important;
+            border-color: $bv-btn-blue-primary !important;
+            color: $bv-btn-text-white !important;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(1, 98, 244, 0.28);
+
+            .cmp-button__text,
+            .cmp-button__icon {
+                color: $bv-btn-text-white !important;
+            }
+        }
+    }
+}
+
+// Dark Navy Button (Corporate Deep Navy with vibrant blue on hover)
+.btn--dark,
+.button.btn--dark,
+.btn--navy,
+.button.btn--navy {
+    .cmp-button,
+    &.cmp-button {
+        background-color: $bv-btn-navy-primary !important;
+        border-color: $bv-btn-navy-primary !important;
+        color: $bv-btn-text-white !important;
+
+        &:hover,
+        &:focus-visible {
+            background-color: $bv-btn-blue-primary !important;
+            border-color: $bv-btn-blue-primary !important;
+            color: $bv-btn-text-white !important;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 22px rgba(1, 41, 101, 0.42);
+        }
+    }
+}
+
+// Inverted / White Button (For dark background containers & hero sections)
+.btn--inverted,
+.button.btn--inverted,
+.btn--white,
+.button.btn--white {
+    .cmp-button,
+    &.cmp-button {
+        background-color: #FFFFFF !important;
+        border-color: #FFFFFF !important;
+        color: $bv-btn-navy-primary !important;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.14);
+
+        .cmp-button__text,
+        .cmp-button__icon {
+            color: $bv-btn-navy-primary !important;
+        }
+
+        &:hover,
+        &:focus-visible {
+            background-color: $bv-btn-navy-primary !important;
+            border-color: $bv-btn-navy-primary !important;
+            color: #FFFFFF !important;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.24);
+
+            .cmp-button__text,
+            .cmp-button__icon {
+                color: #FFFFFF !important;
+            }
+        }
+    }
+}
+
+// Ghost / Arrow Link Button (Minimal text link with animated slide arrow)
+.btn--arrow,
+.button.btn--arrow,
+.btn--ghost,
+.button.btn--ghost {
+    .cmp-button,
+    &.cmp-button {
+        background: transparent !important;
+        border: none !important;
+        border-radius: 0 !important;
+        padding: 4px 0 !important;
+        min-height: auto !important;
+        color: $bv-btn-blue-primary !important;
+        box-shadow: none !important;
+        gap: 6px;
+
+        .cmp-button__text {
+            color: $bv-btn-blue-primary !important;
+            font-weight: 700 !important;
+        }
+
+        &::after {
+            content: '→';
+            display: inline-block;
+            font-size: 1.15em;
+            font-weight: 700;
+            color: inherit;
+            margin-left: 2px;
+            transition: transform 0.25s ease;
+        }
+
+        &:hover,
+        &:focus-visible {
+            background: transparent !important;
+            color: $bv-btn-blue-hover !important;
+            transform: none !important;
+            box-shadow: none !important;
+
+            .cmp-button__text {
+                color: $bv-btn-blue-hover !important;
+            }
+
+            &::after {
+                transform: translateX(5px);
+            }
+
+            .cmp-button__icon {
+                transform: translateX(5px);
+            }
+        }
+    }
+}
+
+// ------------------------------------------------------------------------------
+// 3. BUTTON SIZES (AEM Style System Group 2)
+// ------------------------------------------------------------------------------
+
+// Small Button
+.btn--sm,
+.button.btn--sm,
+.btn--small,
+.button.btn--small {
+    .cmp-button,
+    &.cmp-button {
+        font-size: 13px !important;
+        font-weight: 600 !important;
+        padding: 8px 18px !important;
+        min-height: 36px !important;
+        gap: 6px !important;
+    }
+}
+
+// Medium / Standard Button (Default baseline)
+.btn--md,
+.button.btn--md,
+.btn--medium,
+.button.btn--medium {
+    .cmp-button,
+    &.cmp-button {
+        font-size: 15px !important;
+        font-weight: 600 !important;
+        padding: 12px 26px !important;
+        min-height: 46px !important;
+        gap: 8px !important;
+    }
+}
+
+// Large Button (Hero CTAs & Prominent Actions)
+.btn--lg,
+.button.btn--lg,
+.btn--large,
+.button.btn--large {
+    .cmp-button,
+    &.cmp-button {
+        font-size: 17px !important;
+        font-weight: 700 !important;
+        padding: 16px 36px !important;
+        min-height: 54px !important;
+        gap: 10px !important;
+    }
+}
+
+// ------------------------------------------------------------------------------
+// 4. BUTTON SHAPE & WIDTH (AEM Style System Group 3)
+// ------------------------------------------------------------------------------
+
+// Rounded Corners (Modern 6px)
+.btn--rounded,
+.button.btn--rounded {
+    .cmp-button,
+    &.cmp-button {
+        border-radius: 6px !important;
+    }
+}
+
+// Pill Shape (Full 50px pill)
+.btn--pill,
+.button.btn--pill {
+    .cmp-button,
+    &.cmp-button {
+        border-radius: 50px !important;
+    }
+}
+
+// Full Width Button (Spans 100% of parent container)
+.btn--full-width,
+.button.btn--full-width {
+    width: 100% !important;
+
+    .cmp-button,
+    &.cmp-button {
+        width: 100% !important;
+        display: flex !important;
+        justify-content: center !important;
+    }
+}
+
+// ------------------------------------------------------------------------------
+// 5. FONT / TEXT COLOR OVERRIDES (AEM Style System Group 4)
+// ------------------------------------------------------------------------------
+
+// Force White Text
+.btn--text-white,
+.button.btn--text-white {
+    .cmp-button,
+    &.cmp-button {
+        color: #FFFFFF !important;
+
+        .cmp-button__text,
+        .cmp-button__icon {
+            color: #FFFFFF !important;
+        }
+    }
+}
+
+// Force Dark Charcoal Text
+.btn--text-dark,
+.button.btn--text-dark {
+    .cmp-button,
+    &.cmp-button {
+        color: #141414 !important;
+
+        .cmp-button__text,
+        .cmp-button__icon {
+            color: #141414 !important;
+        }
+    }
+}
+
+// Force Brainvire Blue Text
+.btn--text-blue,
+.button.btn--text-blue {
+    .cmp-button,
+    &.cmp-button {
+        color: $bv-btn-blue-primary !important;
+
+        .cmp-button__text,
+        .cmp-button__icon {
+            color: $bv-btn-blue-primary !important;
+        }
+    }
+}
+
+// Force Corporate Navy Text
+.btn--text-navy,
+.button.btn--text-navy {
+    .cmp-button,
+    &.cmp-button {
+        color: $bv-btn-navy-primary !important;
+
+        .cmp-button__text,
+        .cmp-button__icon {
+            color: $bv-btn-navy-primary !important;
+        }
+    }
+}

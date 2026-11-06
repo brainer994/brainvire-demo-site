@@ -1,4 +1,4 @@
-/* Zero-padding and full-bleed layout for hero banner and its parent wrappers */
+﻿/* Zero-padding and full-bleed layout for hero banner and its parent wrappers */
 .container:has(.herobanner),
 .container:has(.hero-banner),
 .container--hero,
@@ -147,13 +147,13 @@
 
 .hero-banner__button--primary {
     background: #0866ff;
-    color: #fff;
+    color: #fff !important;
 }
 
 .hero-banner__button--primary:hover,
 .hero-banner__button--primary:focus {
     background: #004fc9;
-    color: #fff;
+    color: #fff !important;
     transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(8, 102, 255, 0.3);
 }
@@ -161,7 +161,7 @@
 .hero-banner__button--secondary {
     border-color: #64748b;
     background: transparent;
-    color: #172033;
+    color: #172033 !important;
 }
 
 .hero-banner__button--secondary:hover,
@@ -172,7 +172,7 @@
 
 .hero-banner__cards {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
     gap: 16px;
     margin-top: 40px;
 }
@@ -243,7 +243,6 @@
 
 @media (max-width: 1024px) {
     .hero-banner__cards {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 14px;
     }
 }
@@ -278,5 +277,182 @@
     .hero-banner__card {
         transition: none;
         transform: none !important;
+    }
+}
+
+/* ── About Us Variant ─────────────────────────────────────────────────────── */
+.hero-banner--about-us {
+    min-height: 480px;
+    padding: 80px 0 72px;
+    background: #0a0f1e;
+}
+
+.hero-banner--about-us .hero-banner__overlay {
+    background:
+        linear-gradient(105deg, rgba(1, 26, 80, .92) 0%, rgba(1, 49, 130, .78) 40%, rgba(1, 98, 244, .38) 70%, transparent 100%),
+        radial-gradient(800px 600px at 80% 50%, rgba(1, 98, 244, .22), transparent 70%);
+}
+
+.hero-banner--about-us .hero-banner__eyebrow {
+    color: #5b9bff;
+    letter-spacing: .12em;
+}
+
+.hero-banner--about-us .hero-banner__content {
+    max-width: 760px;
+    color: #fff;
+}
+
+.hero-banner--about-us .hero-banner__title {
+    font-size: clamp(2.25rem, 4.5vw, 4.25rem);
+    color: #fff;
+    letter-spacing: -.04em;
+}
+
+.hero-banner--about-us .hero-banner__title span,
+.hero-banner--about-us .hero-banner__highlight {
+    background: linear-gradient(90deg, #5b9bff 0%, #a78bfa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-banner--about-us .hero-banner__description {
+    color: rgba(255, 255, 255, .72);
+    font-size: 17px;
+    max-width: 560px;
+}
+
+.hero-banner--about-us .hero-banner__button--primary {
+    background: #0866ff;
+    color: #fff !important;
+    border-radius: 6px;
+}
+
+.hero-banner--about-us .hero-banner__button--primary:hover,
+.hero-banner--about-us .hero-banner__button--primary:focus {
+    background: #2d7fff;
+    box-shadow: 0 4px 20px rgba(8, 102, 255, .45);
+}
+
+.hero-banner--about-us .hero-banner__button--secondary {
+    border-color: rgba(255, 255, 255, .4);
+    color: #fff !important;
+    border-radius: 6px;
+}
+
+.hero-banner--about-us .hero-banner__button--secondary:hover,
+.hero-banner--about-us .hero-banner__button--secondary:focus {
+    background: rgba(255, 255, 255, .12);
+    border-color: rgba(255, 255, 255, .7);
+}
+
+@media (max-width: 600px) {
+    .hero-banner--about-us {
+        padding: 56px 0 48px;
+    }
+}
+
+
+
+/* -- Lets Talk Variant ----------------------------------------------------- */
+.hero-banner--lets-talk .hero-banner,
+.hero-banner.hero-banner--lets-talk {
+    min-height: auto !important;
+    padding: 80px 0 88px !important;
+    background: #0a1628 !important;
+}
+
+.hero-banner--lets-talk .hero-banner__media,
+.hero-banner.hero-banner--lets-talk .hero-banner__media {
+    background: #0a1628 !important;
+}
+
+.hero-banner--lets-talk .hero-banner__overlay,
+.hero-banner.hero-banner--lets-talk .hero-banner__overlay {
+    background:
+        radial-gradient(900px 600px at 50% 0%, rgba(8, 102, 255, .28), transparent 65%),
+        radial-gradient(600px 400px at 10% 100%, rgba(1, 49, 130, .35), transparent 60%),
+        radial-gradient(500px 400px at 90% 100%, rgba(91, 155, 255, .15), transparent 60%) !important;
+    opacity: 1 !important;
+}
+
+.hero-banner--lets-talk .hero-banner__inner,
+.hero-banner.hero-banner--lets-talk .hero-banner__inner {
+    width: min(100% - 48px, 1240px);
+    margin: 0 auto;
+}
+
+.hero-banner--lets-talk .hero-banner__content,
+.hero-banner.hero-banner--lets-talk .hero-banner__content {
+    max-width: 100%;
+    margin-bottom: 0;
+}
+
+.hero-banner--lets-talk .hero-banner__eyebrow,
+.hero-banner.hero-banner--lets-talk .hero-banner__eyebrow {
+    color: #5b9bff;
+    letter-spacing: .14em;
+}
+
+.hero-banner--lets-talk .hero-banner__title,
+.hero-banner.hero-banner--lets-talk .hero-banner__title {
+    font-size: clamp(2rem, 4vw, 3.25rem) !important;
+    color: #fff !important;
+    letter-spacing: -.04em;
+    max-width: 100%;
+}
+
+.hero-banner--lets-talk .hero-banner__title span,
+.hero-banner.hero-banner--lets-talk .hero-banner__title span {
+    background: linear-gradient(90deg, #5b9bff 0%, #a78bfa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-banner--lets-talk .hero-banner__description,
+.hero-banner.hero-banner--lets-talk .hero-banner__description {
+    color: rgba(255, 255, 255, .65) !important;
+    max-width: 560px;
+}
+
+.hero-banner--lets-talk .hero-banner__actions,
+.hero-banner.hero-banner--lets-talk .hero-banner__actions {
+    justify-content: flex-start;
+}
+
+.hero-banner--lets-talk .hero-banner__button--primary,
+.hero-banner.hero-banner--lets-talk .hero-banner__button--primary {
+    background: #0866ff;
+    color: #fff !important;
+    border-radius: 6px;
+}
+
+.hero-banner--lets-talk .hero-banner__button--primary:hover,
+.hero-banner--lets-talk .hero-banner__button--primary:focus,
+.hero-banner.hero-banner--lets-talk .hero-banner__button--primary:hover,
+.hero-banner.hero-banner--lets-talk .hero-banner__button--primary:focus {
+    background: #2d7fff;
+    box-shadow: 0 6px 20px rgba(8, 102, 255, .45);
+}
+
+.hero-banner--lets-talk .hero-banner__button--secondary,
+.hero-banner.hero-banner--lets-talk .hero-banner__button--secondary {
+    border-color: rgba(255, 255, 255, .35);
+    color: #fff !important;
+    border-radius: 6px;
+}
+
+.hero-banner--lets-talk .hero-banner__button--secondary:hover,
+.hero-banner--lets-talk .hero-banner__button--secondary:focus,
+.hero-banner.hero-banner--lets-talk .hero-banner__button--secondary:hover,
+.hero-banner.hero-banner--lets-talk .hero-banner__button--secondary:focus {
+    background: rgba(255, 255, 255, .08);
+    border-color: rgba(255, 255, 255, .65);
+}
+
+@media (max-width: 600px) {
+    .hero-banner--lets-talk .hero-banner,
+    .hero-banner.hero-banner--lets-talk {
+        padding: 60px 0 68px !important;
     }
 }
