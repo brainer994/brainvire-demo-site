@@ -1,0 +1,13 @@
+{
+  "scheduler.expression": "0 0 7 * * ?",
+  "scheduler.concurrent": false,
+  "searchRootPath": "/content/brainvire-demo-site",
+  "daysBack": 7,
+  "smtpHost": "smtp.gmail.com",
+  "smtpPort": "587",
+  "smtpUsername": "het.kothari@brainvire.com",
+  "smtpPassword": "{580d1b8b988566e79de79ee84c429e260444f4bd3c84deb4dc9106cb881200c478e9a3f5d0a0b8429160618e85361c06}",
+  "mailFrom": "het.kothari@brainvire.com",
+  "mailTo": "het.kothari@brainvire.com",
+  "mailSubject": "AEM Content Audit Report"
+}

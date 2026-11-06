@@ -1,0 +1,6 @@
+{
+  "user.mapping": [
+    "brainvire-demo-site.core:packageService=[demo-brainvire-service-user]",
+    "brainvire-demo-site.core:contentAuditService=[demo-brainvire-service-user]"
+  ]
+}
